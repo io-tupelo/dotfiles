@@ -4,6 +4,11 @@ if $(isMac) ; then #{
   echo "OSX is dumb!"  > /dev/null  # stupid bash can't handle an empty "then" part
   # sleep 3
 
+
+  lsColorFlag="-G" # mac osx cannot handle the GNU ls option '--color'
+  export LSCOLORS=gxfxcxdxbxegedabagacad
+
+
   path_append /usr/local/sbin
   path_append /usr/sbin
   path_append /sbin

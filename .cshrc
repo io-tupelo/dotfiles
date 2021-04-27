@@ -47,6 +47,9 @@ if ( $isTCsh ) then
   bindkey -v
 endif
 
+alias dosrc "source ~/.cshrc"
+alias shellver 'echo "  $version" '
+
 # Always use egrep
 alias grep  "\grep -E"  # same as deprecated 'egrep'
 

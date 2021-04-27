@@ -2,6 +2,8 @@ if $(isLinux) ; then #{
   # echo "Found Linux"
   echo "Bash is dumb!" > /dev/null  # stupid bash can't handle an empty "then" part
 
+  lsColorFlag="--color"
+
   export JAVA_HOME="/opt/java"                                ; path_prepend ${JAVA_HOME}/bin
   export IDEA_HOME="/opt/idea"                                ; path_prepend ${IDEA_HOME}/bin
 # export PGDATA="/var/edb/postgresql"
@@ -75,23 +77,7 @@ if $(isLinux) ; then #{
     unalias gvim
   fi
 
-  alias d='    ls -ldF   --color'
-  alias lal='  ls -alF   --color'
-  alias ldl='  ls -ldF   --color .*'
-  alias ddr2='find .  -maxdepth 2  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-  alias ddr3='find .  -maxdepth 3  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-  alias ddr4='find .  -maxdepth 4  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-  alias ddr5='find .  -maxdepth 5  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-  alias ddr6='find .  -maxdepth 6  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-  alias ddr7='find .  -maxdepth 7  -type d  | sed -e 's/^..//' | xargs ls -ldF --color'
-
   alias idea="idea.sh &"
   alias yourkit="${YOURKIT_HOME}/bin/profiler.sh &"
 
-  # python abbreviations
-  alias py=python
-  alias py3=python3
-  ### alias python=python3
-  ### alias pip=pip3
-  ### alias venv=virtualenv
 fi #} if $(isLinux)

@@ -42,11 +42,13 @@ function isLinux() {
 #   isLinux  && echo "Found Linux"
 #   isMac    && echo "Found Darwin"
 
+# These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
 if $(isMac)   ; then  source ~/.common-mac.bash     ; fi
+#TODO  add windows version (for git bash)
 
-
-function shellVersion() {
+# Returns the shell type and version
+function shellver() {
   if [[ $ZSH_VERSION != "" ]]; then
     echo "  zsh $ZSH_VERSION"
   elif [[ $BASH_VERSION != "" ]]; then
@@ -55,7 +57,7 @@ function shellVersion() {
     echo "  *** unknown shell! ***"
   fi
 }
-alias shellver="shellVersion"
+
 
 alias da='   d *'
 alias dal='  ls -ldF * | less'
@@ -63,13 +65,13 @@ alias dar='  d **/*'
 alias dt9='  d -t * | head -9'
 alias dt22=' d -t * | head -22'
 
-alias du="du -m"
-alias df="df -m"
-alias dfs="df -m | grep -v '/snap/' | grep -v '^tmpfs'"
+alias d='    ls -ldF   ${lsColorFlag}'
+alias lal='  ls -alF   ${lsColorFlag}'
+alias ldl='  ls -ldF   ${lsColorFlag} .*'
 
 # Always use egrep
 alias grep=" \grep  -E --color=auto"  # same as deprecated 'egrep'
-alias grepi="\grep -iE --color=auto"
+alias grepi="\grep -iE --color=auto"  # case insensitive
 
 alias radirs="find . -type d "                                  # Recursive All Dirs
 alias rdirs="radirs | grep -v '/\.' | sed -e 's/^..//' "        # Recursive Dirs
@@ -77,7 +79,20 @@ alias ldirs="find  * -maxdepth 0 -type d "                      # Local Dirs
 alias lfiles="find * -maxdepth 0 -type f "                      # Local Files
 alias dd='d $(ldirs) '                                          # d Dirs
 alias ddr='d $(rdirs) '                                         # d Dirs Recursive
+
+#TODO fix these => function with arg N
+alias ddr2="find .  -maxdepth 2  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+alias ddr3="find .  -maxdepth 3  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+alias ddr4="find .  -maxdepth 4  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+alias ddr5="find .  -maxdepth 5  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+alias ddr6="find .  -maxdepth 6  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+alias ddr7="find .  -maxdepth 7  -type d  | sed -e 's/^..//' | xargs ls -ldF ${lsColorFlag}"
+
 alias ddra='d $(radirs) '                                       # d Dirs Recursive All
+
+alias du="du -m"
+alias df="df -m"
+alias dfs="df -m | grep -v '/snap/' | grep -v '^tmpfs'"
 
 alias wcl="wc -l"       # Word Count Lines
 
@@ -322,26 +337,28 @@ alias lcdoor="(lc; door)"
 
 alias rmt="rm -rf ./target"
 
-#  deprecated:  alias laca="lein ancient check :all"   # <= this works in zsh, but not bash
 function lanc() {  # Lein ANCient
   echo ""
   echo ""-----------------------------------------------------------------------------
   echo "project.clj:"
   echo ""
-  lein ancient check           :all  # lanc()
+  lein ancient check           :all
   echo ""
   echo ""-----------------------------------------------------------------------------
   echo "profiles.clj:"
   echo ""
-  lein ancient check-profiles  :all  # lanc()
+  lein ancient check-profiles  :all
   echo ""-----------------------------------------------------------------------------
   echo ""
 }
 
+#---------------------------------------------------------------------------------------------------
+# python abbreviations
 # python env vars
 export PYTHONDONTWRITEBYTECODE="enable"     # invaluable for avoiding stale cache errors
 # python abbreviations
 # alias python=python3
+alias py=python
 alias py2=python2
 alias py3=python3
 alias pyx="chmod a+x *.py "
@@ -357,6 +374,7 @@ function venvoff() {
             deactivate
 }
 
+#---------------------------------------------------------------------------------------------------
 # misc stuff
 alias crashrm="sudo rm /var/crash/*"       # remove Ubuntu crash files that create annoying warnings
 function mkpath() {
