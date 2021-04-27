@@ -1,7 +1,8 @@
 #!/bin/zsh
 # echo ".zshrc - enter"
-
-# common bash/zsh aliases in  ~/.common.bash  are sourced from ~/.zshenv
+# NOTE: ***** the system won't source this file for non-interactive shells! ***** 
+# So, only interactive-terminal-related stuff can be here
+# All common bash/zsh aliases are in `~/.common.bash` which is sourced from `~/.zshenv` (always invoked)
 
 export HISTSIZE=1000
 export SAVEHIST=1000

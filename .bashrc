@@ -1,7 +1,7 @@
 #!/bin/bash
 # echo ".bashrc - enter"
 
-# Needed so non-interactive bash shells will source ~/.bashrc
+# Needed so non-interactive bash shells will source `~/.bashrc` (see `man bash`)
 export BASH_ENV=~/.bashrc
 
 # common bash/zsh aliases
