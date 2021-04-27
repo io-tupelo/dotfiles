@@ -256,6 +256,7 @@ alias dgit='git --git-dir ~/dotfiles/.git --work-tree=${HOME}'
 alias dgits='dgit status --short --branch'
 alias dgitca='dgit commit --all'
 alias dgitcam='dgit commit --all -m"misc" '
+alias dgitcamp=" dgit commit --all -m'misc' ; dgit push"
 alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # git-sync (also push tags)
 
 #---------------------------------------------------------------------------------------------------
