@@ -25,22 +25,16 @@ export PATH=.
 # path_append /sbin
 
 function isMac() {
-  if [[ $(uname -a) =~ "Darwin" ]]; then
-    true
-  else
-    false
-  fi
+  # $(uname -a) => `Darwin athompson-ol.san.rr.com 19.6.0 Darwin Kernel Version 19.6.0: Tue Nov 10 # 00:10:30 PST 2020; root:xnu-6153.141.10~1/RELEASE_X86_64 x86_64`
+  [[ $(uname -a) =~ "Darwin" ]] # returns true (0) or false (1)
 }
 function isLinux() {
-  if [[ $(uname -a) =~ "Linux" ]]; then
-    true
-  else
-    false
-  fi
+  # $(uname -a) => `Linux ubuntu-focal 5.4.0-72-generic #80-Ubuntu SMP Mon Apr 12 17:35:00 UTC # 2021 x86_64 x86_64 x86_64 GNU/Linux`
+  [[ $(uname -a) =~ "Linux"  ]] # returns true (0) or false (1)
 }
-# sample 1-line usage:
-#   isLinux  && echo "Found Linux"
-#   isMac    && echo "Found Darwin"
+# sample 1-line usage (a bash "and list"; "or list" works as well)
+#   isLinux && echo "Found Linux"         <= equivalent to if/then multi-line expression
+#   isMac   && echo "Found Darwin"        <= equivalent to if/then multi-line expression
 
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
@@ -123,6 +117,7 @@ alias dgitca='dgit commit --all'
 alias dgitcam='dgit commit --all -m"misc" '
 alias dgitcamp=" dgit commit --all -m'misc' ; dgit push"
 alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # git-sync (also push tags)
+alias dgitdw="dgit diff --ignore-all-space --ignore-blank-lines"
 
 #---------------------------------------------------------------------------------------------------
 alias gits="    git status --short --branch"
