@@ -17,6 +17,8 @@ if $(isMac) ; then #{
   path_append /usr/sbin
   path_append /sbin
 
+  path_prepend "/Applications/VMware Fusion.app/Contents/Public"
+
   ### alias d='    ls -ldF'
   ### alias lal='  ls -alF'
   alias idea='echo "not implemented; start IDEA from dock" '
