@@ -32,9 +32,9 @@ function isLinux() {
   # $(uname -a) => `Linux ubuntu-focal 5.4.0-72-generic #80-Ubuntu SMP Mon Apr 12 17:35:00 UTC # 2021 x86_64 x86_64 x86_64 GNU/Linux`
   [[ $(uname -a) =~ "Linux"  ]] # returns true (0) or false (1)
 }
-# sample 1-line usage (a bash "and list"; "or list" works as well)
-#   isLinux && echo "Found Linux"         <= equivalent to if/then multi-line expression
-#   isMac   && echo "Found Darwin"        <= equivalent to if/then multi-line expression
+# sample 1-line usage (a bash "and list"; bash also supports the "or list" using `||`)
+#   isLinux && echo "Found Linux"         <= equivalent to if/then expression
+#   isMac   && echo "Found Darwin"        <= equivalent to if/then expression
 
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
@@ -133,8 +133,8 @@ alias gitdw="   git diff --ignore-all-space --ignore-blank-lines"
 alias gitlg="   git log -22 --oneline --graph --decorate"
 alias git-unadd='git reset HEAD'    # git unadd
 
-#  usage:   gittag v9.3.1   - create a tag
-#           gittag          - display all tags
+#  usage:   gitg v9.3.1   # create a tag
+#           gitg          # display all tags
 function gitg() {
   local tagStr=$1
   if [[ "$tagStr" == "" ]]; then
