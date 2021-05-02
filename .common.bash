@@ -111,13 +111,18 @@ alias cutm="cut --char=-155"
 alias cutl="cut --char=-222"
 
 #---------------------------------------------------------------------------------------------------
-# alias dgit='git --git-dir ~/dotfiles/.git --work-tree=${HOME}' 
-alias   dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}' 
+# To initialize a new user (*** WARNING - overwrites dest files! ***):
+#   > cd                                                                    # go to home dir
+#   > git clone  --bare  git@github.com:io-tupelo/dotfiles.git              # creates dir `dotfiles.git` 
+#   > alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'   # define alias
+#   > dgit reset --hard                                                     # use `dgit` to deploy files
+#
+alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}' 
 alias dgits='dgit status --short --branch'
 alias dgitca='dgit commit --all'
 alias dgitcam='dgit commit --all -m"misc" '
 alias dgitcamp=" dgit commit --all -m'misc' ; dgit push"
-alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # git-sync (also push tags)
+alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # i.e. "git sync" (also pushes tags)
 alias dgitdw="dgit diff --ignore-all-space --ignore-blank-lines"
 
 #---------------------------------------------------------------------------------------------------
@@ -128,7 +133,7 @@ alias gitco="   git checkout"
 alias gitca="   git commit --all"
 alias gitcam="  git commit --all -m'misc' "
 alias gitcamp=" git commit --all -m'misc' ; git push"
-alias gitsy="   git pull ; git push ; git push --tags"    # git-sync (also push tags)
+alias gitsy="   git pull ; git push ; git push --tags"    # i.e. "git sync" (also pushes tags) 
 alias gitdns="  git diff --name-status"
 alias gitdw="   git diff --ignore-all-space --ignore-blank-lines"
 alias gitlg="   git log -22 --oneline --graph --decorate"
