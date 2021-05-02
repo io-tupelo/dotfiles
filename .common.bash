@@ -111,7 +111,8 @@ alias cutm="cut --char=-155"
 alias cutl="cut --char=-222"
 
 #---------------------------------------------------------------------------------------------------
-alias dgit='git --git-dir ~/dotfiles/.git --work-tree=${HOME}'
+# alias dgit='git --git-dir ~/dotfiles/.git --work-tree=${HOME}' 
+alias   dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}' 
 alias dgits='dgit status --short --branch'
 alias dgitca='dgit commit --all'
 alias dgitcam='dgit commit --all -m"misc" '

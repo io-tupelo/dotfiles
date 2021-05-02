@@ -70,10 +70,12 @@ if $(isLinux) ; then #{
 
   java15  >& /dev/null  # ********** default java version to use **********
 
-  alias gvim="\gvim  -geom '+4400+0' 2>&/dev/null"
-  alias gvimw="\gvim  -geom '300x80+2200+0' "
+  unalias gvim >& /dev/null
+  GVIM=$(which gvim)
+  alias gvim="${GVIM}  -geom '+4400+0' 2>/dev/null"
+  # alias gvimw="${GVIM}  -geom '300x80+2200+0' "
   if [[ $(hostname) == amy ]]; then
-    # alias gvim="\gvim  -geom '+3300+0' 2>&/dev/null"
+    # alias gvim="${GVIM}  -geom '+3300+0' 2>&/dev/null"
     unalias gvim
   fi
 
