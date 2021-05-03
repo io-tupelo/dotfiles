@@ -204,7 +204,8 @@ alias gitdg='git difftool --noprompt --extcmd="gvim -d --nofork -geometry 220x80
 
 alias diffw="diff --ignore-all-space --ignore-blank-lines"
 
-alias shx="chmod a+x *.sh *.bash *.csh *.zsh *.groovy *.clj"
+umask 077   # disable access by group & world
+alias shx="chmod u+x *.sh *.bash *.csh *.zsh *.groovy *.clj"
 alias kk="kill -9"
 
 alias zpru="java  -jar ~/opt/zprint.jar  -w **/*.clj "
