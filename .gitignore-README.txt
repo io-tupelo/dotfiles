@@ -1,0 +1,14 @@
+
+The special file
+
+  ./info/exclude
+
+functions as a `.gitignore` file for the dotfiles.fit repo.   It contains a single line 
+
+  *
+
+to ignore all files at the top level of ${HOME}.
+
+We cannot use the regular file `.gitignore` as it would be deployed to `~/.gitignore`
+and would thus affect ALL other git repositories for the user.
+
