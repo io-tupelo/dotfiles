@@ -1,6 +1,7 @@
 {:width 125
  :style :respect-nl ; :indent-only
- :map {:justify? true}
+ :map {:justify? true
+       :comma? false }
  :binding {:justify? true}
  :pair {:justify? true}
  }
