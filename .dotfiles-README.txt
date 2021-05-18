@@ -1,0 +1,31 @@
+Configuration Dotfiles for Linux & Mac OSX
+----
+
+Installation:
+----
+Clone the Git repository:
+
+    git clone  --bare  git@github.com:io-tupelo/dotfiles.git    # creates dir `dotfiles.git`
+
+Create a `git` alias that will be used only for the dotfiles repo:
+
+    alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}' 
+
+Configure the dotfiles repo to ignore new/untracked files by default
+
+    dgit config --local status.showUntrackedFiles no 
+
+Save any existing dotfiles (important!)
+
+    mkdir dotfiles-old
+    mv .* dotfiles-old
+
+Install dotfiles from the repo `dotfiles.git`.  
+
+*****  WARNING - will overwrite existing dotfiles! ***** 
+*****  WARNING - will overwrite existing dotfiles! ***** 
+*****  WARNING - will overwrite existing dotfiles! ***** 
+
+    dgit reset --hard 
+
+
