@@ -8,6 +8,10 @@ filetype plugin on            " plugins are enabled
 " Recognize *.cljx files as Clojure source. Can place in ~/.vimrc or ~/.vim/ftdetect/cljx.vim
 " autocmd BufWinEnter,BufNewFile,BufRead *.cljx set filetype=clojure
 
+" Remove `.` (period) as a keyword so "word" movement will stop on the `.` char
+"   (i.e. in a namespace like `proj.some.long.ns.name`)
+autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=.
+
 " Vim Fireplace shortcuts
 nnoremap  <C-e>     :%Eval<CR>
 nnoremap  <C-e>     :Eval<CR>
@@ -108,6 +112,7 @@ endfunction
 
 " Write a protected file using sudo
 :command! W w !sudo tee % > /dev/null
+
 
 " Rainbow Parentheses stuff
     " let g:rbpt_colorpairs = [
