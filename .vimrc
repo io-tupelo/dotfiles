@@ -8,9 +8,12 @@ filetype plugin on            " plugins are enabled
 " Recognize *.cljx files as Clojure source. Can place in ~/.vimrc or ~/.vim/ftdetect/cljx.vim
 " autocmd BufWinEnter,BufNewFile,BufRead *.cljx set filetype=clojure
 
-" Remove `.` (period) as a keyword so "word" movement will stop on the `.` char
-"   (i.e. in a namespace like `proj.some.long.ns.name`)
+" Remove the period `.`, hyphen, `-`, and slash `/` as keyword chars so "word" movement will stop 
+" on these chars (i.e. in a namespace like `proj.some.long.ns.name` or a symbol like `my-clojure-sym`)
+" Must do one at a time for 'string lists'
 autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=.
+autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=-
+autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=/
 
 " Vim Fireplace shortcuts
 nnoremap  <C-e>     :%Eval<CR>
