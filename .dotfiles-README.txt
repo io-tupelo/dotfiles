@@ -34,6 +34,6 @@ Add a new file to the dotfiles repo
     dgit add -f .some-new-file-rc   # eg .cshrc, etc
     dgits                           # "dgit status" - shows added
     dgitcamp                        # "dgit commit all 'misc' push" - commit & push
+    dgitsy                          # "dgit sync" - combined push & pull
     
-
 

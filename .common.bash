@@ -208,7 +208,8 @@ umask 077   # disable access by group & world
 alias shx="chmod u+x *.sh *.bash *.csh *.zsh *.groovy *.clj"
 alias kk="kill -9"
 
-alias zpru="java  -jar ~/opt/zprint.jar  -w **/*.clj "
+alias zpr="java  -jar ~/opt/zprint.jar  -w **/*.clj "
+alias zprv="java  -jar ~/opt/zprint.jar  --version  "
 
 isMac    && alias pk="pkill -9 -i"
 isLinux  && alias pk="pkill -9"

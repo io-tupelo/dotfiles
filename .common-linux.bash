@@ -33,12 +33,6 @@ if $(isLinux) ; then #{
     java -version
   }
 
-  function zulu13() {
-    export JAVA_HOME=/opt/zulu
-    path_prepend ${JAVA_HOME}/bin
-    java  --version
-  }
-
   function java8() {
     export JAVA_HOME=/opt/java8
     path_prepend "${JAVA_HOME}/bin"
@@ -46,12 +40,6 @@ if $(isLinux) ; then #{
   }
   function java11() {
     export JAVA_HOME=/opt/java11
-    path_prepend "${JAVA_HOME}/bin"
-    java  --version
-  }
-
-  function java14() {
-    export JAVA_HOME=/opt/java14
     path_prepend "${JAVA_HOME}/bin"
     java  --version
   }
