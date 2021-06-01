@@ -11,9 +11,9 @@ filetype plugin on            " plugins are enabled
 " Remove the period `.`, hyphen, `-`, and slash `/` as keyword chars so "word" movement will stop 
 " on these chars (i.e. in a namespace like `proj.some.long.ns.name` or a symbol like `my-clojure-sym`)
 " Must do one at a time for 'string lists'
-autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=.
-autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=-
-autocmd BufWinEnter,BufNewFile,BufRead *.clj set iskeyword-=/
+autocmd BufWinEnter,BufNewFile,BufRead *.clj* set iskeyword-=.
+autocmd BufWinEnter,BufNewFile,BufRead *.clj* set iskeyword-=-
+autocmd BufWinEnter,BufNewFile,BufRead *.clj* set iskeyword-=/
 
 " Vim Fireplace shortcuts
 nnoremap  <C-e>     :%Eval<CR>
@@ -54,6 +54,7 @@ set selectmode="mouse,key,cmd"
 set fileformat=unix
 set fileformats=unix,dos
 set ruler
+set number
 set nowrap
 set equalalways
 set selectmode="mouse,key,cmd"
