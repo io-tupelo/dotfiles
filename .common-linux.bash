@@ -70,4 +70,6 @@ if $(isLinux) ; then #{
   alias idea="idea.sh &"
   alias yourkit="${YOURKIT_HOME}/bin/profiler.sh &"
 
+  alias neo4j-start="/opt/neo4j/neo4j-desktop-1.4.8-x86_64.AppImage &"
+
 fi #} if $(isLinux)
