@@ -20,5 +20,13 @@ PROMPT_DIRTRIM=4
 # bash-specific aliases
 alias dosrc="source ~/.bashrc"
 
+# ***** set => true for tigergraph *****
+if false; then
+  export USER=tigergraph
+  export PATH=/home/tigergraph/tigergraph/app/cmd:$PATH
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+fi
+
 # echo ".bashrc - exit"
 

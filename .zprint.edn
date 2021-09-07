@@ -1,7 +1,12 @@
-{:width 125
- :style :respect-nl  ; :indent-only
+{
+ :width 125
+ :style :respect-nl
+ :binding {:justify? true
+           :hang? true }
  :map {:justify? true
-       :comma? false }
- :binding {:justify? true}
+       :comma? false 
+       }
  :pair {:justify? true}
+;:list {:hang? false } ; don't use this
+ :fn-map {"s/defn" :wrap} ; special for Plumatic Schema 
  }
