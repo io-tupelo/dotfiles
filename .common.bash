@@ -20,9 +20,9 @@ export PATH=.
   path_prepend ${HOME}/.bin
   path_prepend ${HOME}/opt/bin
   path_prepend ${HOME}/.local/bin
-# path_append /usr/local/sbin
-# path_append /usr/sbin
-# path_append /sbin
+  path_append /usr/local/sbin
+  path_append /usr/sbin
+  path_append /sbin
 
 function isMac() {
   # $(uname -a) => `Darwin athompson-ol.san.rr.com 19.6.0 Darwin Kernel Version 19.6.0: Tue Nov 10 # 00:10:30 PST 2020; root:xnu-6153.141.10~1/RELEASE_X86_64 x86_64`
@@ -206,7 +206,7 @@ alias gitdg='git difftool --no-prompt --extcmd="gvim -d --nofork " '  # works on
 alias diffw="diff --ignore-all-space --ignore-blank-lines"
 
 umask 077   # disable access by group & world
-alias shx="chmod u+x *.sh *.bash *.csh *.zsh *.groovy *.clj"
+alias shx="chmod u+x *.sh *.bash *.csh *.zsh" # old:  *.clj  *.groovy
 alias kk="kill -9"
 
 alias zpr="java  -jar ~/opt/zprint.jar  -w **/*.clj "
