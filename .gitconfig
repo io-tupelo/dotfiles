@@ -1,8 +1,8 @@
 [user]
-	name = Alan Thompson
+	name = Alan
 	email = cloojure@gmail.com
 [core]
-	editor = vim
+	editor = gvim
 	excludesfile = ~/.gitignore
 ### [merge]
 ### 	tool = gvimdiff

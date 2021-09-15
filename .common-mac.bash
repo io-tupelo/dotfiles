@@ -50,6 +50,11 @@ if $(isMac) ; then #{
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
+  function java17() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
 
   java15 >& /dev/null
 

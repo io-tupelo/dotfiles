@@ -196,10 +196,11 @@ function git-branch-log() {
   git log --oneline $(first $(git-branch-root))..$(git-branch-current)
 }
 alias git-log-string='git log -S'  # search log for changes to a string
-alias gitdg='git difftool --noprompt --extcmd="gvim -d --nofork -geometry 220x80+2000+40" '
+# alias gitdg='git difftool --noprompt --extcmd="gvim -d --nofork -geometry 220x80+2000+40" '
 # alias gitdg="git difftool --noprompt"
         # old version (doesn't work on mac):
         #   dg      = git difftool --no-prompt --extcmd='gvimdiff --nofork -geometry 180x50+20+40'
+alias gitdg='git difftool --no-prompt --extcmd="gvim -d --nofork " '  # works on mac 2021
 
 
 alias diffw="diff --ignore-all-space --ignore-blank-lines"
