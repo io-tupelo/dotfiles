@@ -2,8 +2,9 @@ if $(isLinux) ; then #{
   # echo "Found Linux"
   echo "Bash is dumb!" > /dev/null  # stupid bash can't handle an empty "then" part
 
-  lsColorFlag="--color"
+  lsColorFlag="--color" 
 
+#---------------------------------------------------------------------------------------------------
   export JAVA_HOME="/opt/java"                                ; path_prepend ${JAVA_HOME}/bin
   export IDEA_HOME="/opt/idea"                                ; path_prepend ${IDEA_HOME}/bin
 # export PGDATA="/var/edb/postgresql"
@@ -25,7 +26,6 @@ if $(isLinux) ; then #{
     # ***** do not set SOLR_HOME *****
     # SOLR_HOME controls the location on disk of the conf & data dirs for a core,
     #   NOT the install location of the Solr binaries & libs
-
 
   function graalvm() {
     export JAVA_HOME=/opt/graalvm
@@ -50,14 +50,15 @@ if $(isLinux) ; then #{
     java  --version
   }
 
-  function java16() {
-    export JAVA_HOME=/opt/java16
+  function java17() {
+    export JAVA_HOME=/opt/java17
     path_prepend "${JAVA_HOME}/bin"
     java  --version
   }
 
-  java15  >& /dev/null  # ********** default java version to use **********
+  java17  >& /dev/null  # ********** default java version to use **********
 
+#---------------------------------------------------------------------------------------------------
   unalias gvim >& /dev/null
   GVIM=$(which gvim)
   alias gvim="${GVIM}  -geom '+4400+0' 2>/dev/null"
