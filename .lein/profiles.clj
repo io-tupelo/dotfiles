@@ -8,6 +8,7 @@
       [lein-exec                "0.3.7"]]
     :jvm-opts ["-Xms1g" "-Xmx4g" 
 ;              "-server"
+;  "--add-opens" "java.base/java.lang=ALL-UNNAMED" ; make codox work on java 16+
               ] 
   } 
 }
