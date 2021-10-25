@@ -1,5 +1,6 @@
 # Mac OSX config
 if $(isMac) ; then #{
+
   # echo "Found Darwin"
   echo "OSX is dumb!"  > /dev/null  # stupid bash can't handle an empty "then" part
   # sleep 3
@@ -56,7 +57,14 @@ if $(isMac) ; then #{
     java -version
   }
 
-  java15 >& /dev/null
+  java17 >& /dev/null
+
+  # for running ScoutPrime on social-a
+  if $(isBash); then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  fi
 
 fi #}
 
