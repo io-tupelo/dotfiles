@@ -20,6 +20,8 @@ if $(isMac) ; then #{
 
   path_prepend "/Applications/VMware Fusion.app/Contents/Public"
 
+  alias dotags="ctags -R -f .tags"
+
   ### alias d='    ls -ldF'
   ### alias lal='  ls -alF'
   alias idea='echo "not implemented; start IDEA from dock" '
