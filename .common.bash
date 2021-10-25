@@ -419,7 +419,7 @@ alias xo="xdg-open"
 
 # what your computer thinks its ip address is
 function iplocal() {
-  ip route get 8.8.8.8 | awk '{print $NF; exit}'    # 8.8.8.8 is google dns
+  ip route get 8.8.8.8 | awk '{print $7; exit}'    # 8.8.8.8 is google dns
 }
 # what the outside world thinks your ip address is
 function ipexternal() {
