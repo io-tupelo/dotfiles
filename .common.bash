@@ -55,12 +55,26 @@ function shellver() {
   fi
 }
 
+function configGVim {
+  ff=/tmp/$$.out
+  which gvim >& $ff
+  if [[ $(cat $ff) =~ "command not found" ]] ; then   # returns true (0) or false (1)
+    GVIM=vim
+  else
+    GVIM=$(which gvim)
+  fi
+}
+configGVim
+echo "GVIM=${GVIM}"
+alias gvim=${GVIM}
+
+###################################################################################################
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
 if $(isMac)   ; then  source ~/.common-mac.bash     ; fi
 #TODO  add windows version (for git bash)
 
-
+###################################################################################################
 alias da='   d *'
 alias dal='  ls -ldF * | less'
 alias dar='  d **/*'
