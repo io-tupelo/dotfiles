@@ -65,7 +65,7 @@ function configGVim {
   fi
 }
 configGVim
-echo "GVIM=${GVIM}"
+# echo "GVIM=${GVIM}"
 alias gvim=${GVIM}
 
 ###################################################################################################
