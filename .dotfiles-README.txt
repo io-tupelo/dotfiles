@@ -3,9 +3,11 @@ Configuration Dotfiles for Linux & Mac OSX
 
 Installation:
 ----
-Clone the Git repository:
+Fork the Git Repo using the browser gui
 
-    git clone  --bare  git@github.com:io-tupelo/dotfiles.git    # creates dir `dotfiles.git`
+Clone the Git repository. NOTE: substitute *your* git username for 'io-tupelo' 
+
+    git clone  --bare  https://github.com/io-tupelo/dotfiles.git    # creates dir `dotfiles.git`
 
 Create a `git` alias that will be used only for the dotfiles repo:
 
@@ -36,4 +38,20 @@ Add a new file to the dotfiles repo
     dgitcamp                        # "dgit commit all 'misc' push" - commit & push
     dgitsy                          # "dgit sync" - combined push & pull
     
+
+To Make Your Own Version of the Dotfiles Repository
+----
+Fork the Git Repo using the browser gui. Then, if your GitHub username is "fred",
+your new repo will have a URL like:
+
+- https://github.com/fred/dotfiles
+
+and a corresponding git SSH remote like:
+
+- git@github.com:fred/dotfiles.git  
+
+Then you can save your edits to your personal dotfiles repo with commands like
+
+- dgit push
+
 
