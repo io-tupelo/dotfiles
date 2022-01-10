@@ -66,7 +66,18 @@ if $(isMac) ; then #{
     java -version
   }
 
-  java17 >& /dev/null
+  function openjdk11() {
+    export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12"
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
+  function openjdk17() {
+    export JAVA_HOME="/usr/local/Cellar/openjdk/17.0.1_1"
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
+
+  openjdk17 >& /dev/null
 
   # for running ScoutPrime on social-a
   if $(isBash); then
