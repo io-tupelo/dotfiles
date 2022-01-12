@@ -33,39 +33,32 @@ if $(isMac) ; then #{
     java -version
   }
 
-  function java8() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-
+  # function java8() {
+  #   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  #   path_prepend ${JAVA_HOME}/bin
+  #   java -version
+  # }
   # function java11() {
   #   export JAVA_HOME=$(/usr/libexec/java_home -v 11)
   #   path_prepend ${JAVA_HOME}/bin
   #   java -version
   # }
-  function java11() {
-    export JAVA_HOME='/usr/local/opt/openjdk@11'
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-  function openjdk11() {
-    export JAVA_HOME='/usr/local/opt/openjdk@11'
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
+  # function java15() {
+  #   export JAVA_HOME=$(/usr/libexec/java_home -v 15)
+  #   path_prepend ${JAVA_HOME}/bin
+  #   java -version
+  # }
+  # function java17() {
+  #   export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+  #   path_prepend ${JAVA_HOME}/bin
+  #   java -version
+  # }
 
-  function java15() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 15)
+  function openjdk8() {
+    export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312"
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  function java17() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-
   function openjdk11() {
     export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12"
     path_prepend ${JAVA_HOME}/bin
@@ -77,7 +70,11 @@ if $(isMac) ; then #{
     java -version
   }
 
-  openjdk17 >& /dev/null
+alias java8="openjdk8"
+alias java11="openjdk11"
+alias java17="openjdk17"
+
+  java8 >& /dev/null
 
   # for running ScoutPrime on social-a
   if $(isBash); then
@@ -85,6 +82,9 @@ if $(isMac) ; then #{
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
   fi
+
+  # alias gvim="/usr/local/bin/gvim"
+  # alias vim="/usr/local/bin/xvim"
 
 fi #}
 

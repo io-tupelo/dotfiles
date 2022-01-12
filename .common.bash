@@ -55,18 +55,20 @@ function shellver() {
   fi
 }
 
-function configGVim {
-  ff=/tmp/$$.out
-  which gvim >& $ff
-  if [[ $(cat $ff) =~ "command not found" ]] ; then   # returns true (0) or false (1)
-    GVIM=vim
-  else
-    GVIM=$(which gvim)
-  fi
-}
-configGVim
-# echo "GVIM=${GVIM}"
-alias gvim=${GVIM}
+# function configGVim {  # ***** why need this? *****
+#   ff=/tmp/$$.out
+#      *** unalias vim
+#      *** unalias gvim
+#   which gvim >& $ff
+#   if [[ $(cat $ff) =~ "command not found" ]] ; then   # returns true (0) or false (1)
+#     GVIM=vim
+#   else
+#     GVIM=$(which gvim)
+#   fi
+# }
+# configGVim
+# # echo "GVIM=${GVIM}"
+# alias gvim=${GVIM}
 
 ###################################################################################################
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
