@@ -59,14 +59,18 @@ if $(isLinux) ; then #{
   java15  >& /dev/null  # ********** default java version to use **********
 
 #---------------------------------------------------------------------------------------------------
-  unalias gvim >& /dev/null
-  GVIM=$(which gvim)
-  alias gvim="${GVIM}  -geom '+4400+0' 2>/dev/null"
+
+#############################################################################
+#TODO  need to make this not crash if no gvim installed!!!
+
+  # unalias gvim >& /dev/null
+  # alias gvim="${GVIM}  -geom '+4400+0' 2>/dev/null"
   # alias gvimw="${GVIM}  -geom '300x80+2200+0' "
-  if [[ $(hostname) == amy ]]; then
-    # alias gvim="${GVIM}  -geom '+3300+0' 2>&/dev/null"
-    unalias gvim
-  fi
+  # if [[ $(hostname) == amy ]]; then
+  #   # alias gvim="${GVIM}  -geom '+3300+0' 2>&/dev/null"
+  #   unalias gvim
+  # fi
+#############################################################################
 
   alias idea="idea.sh &"
   alias yourkit="${YOURKIT_HOME}/bin/profiler.sh &"

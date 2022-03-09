@@ -46,26 +46,51 @@ function isLinux() {
   # $(uname -a) => `Linux ubuntu-focal 5.4.0-72-generic #80-Ubuntu SMP Mon Apr 12 17:35:00 UTC # 2021 x86_64 x86_64 x86_64 GNU/Linux`
   [[ $(uname -a) =~ "Linux"  ]] # returns true (0) or false (1)
 }
-# sample 1-line usage (a bash "and list"; bash also supports the "or list" using `||`)
-#   isLinux && echo "Found Linux"         <= equivalent to if/then expression
-#   isMac   && echo "Found Darwin"        <= equivalent to if/then expression
+#   sample 1-line usage (a bash "and list"; bash also supports the "or list" using `||`)
+#     isLinux && echo "Found Linux"         <= equivalent to if/then expression
+#     isMac   && echo "Found Darwin"        <= equivalent to if/then expression
 
+# Shell type predicate fns
+function isZsh() {
+  [[ $ZSH_VERSION != "" ]] # returns true (0) or false (1)
+}
+function isBash() {
+  [[ $BASH_VERSION != "" ]] # returns true (0) or false (1)
+}
+
+# Returns the shell type and version
+function shellver() {
+  if $(isZsh); then
+    echo "  zsh $ZSH_VERSION"
+  elif $(isBash); then
+    echo "  bash $BASH_VERSION"
+  else
+    echo "  *** unknown shell ***"
+  fi
+}
+
+# function configGVim {  # ***** why need this? *****
+#   ff=/tmp/$$.out
+#      *** unalias vim
+#      *** unalias gvim
+#   which gvim >& $ff
+#   if [[ $(cat $ff) =~ "command not found" ]] ; then   # returns true (0) or false (1)
+#     GVIM=vim
+#   else
+#     GVIM=$(which gvim)
+#   fi
+# }
+# configGVim
+# # echo "GVIM=${GVIM}"
+# alias gvim=${GVIM}
+
+###################################################################################################
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
 if $(isMac)   ; then  source ~/.common-mac.bash     ; fi
 #TODO  add windows version (for git bash)
 
-# Returns the shell type and version
-function shellver() {
-  if [[ $ZSH_VERSION != "" ]]; then
-    echo "  zsh $ZSH_VERSION"
-  elif [[ $BASH_VERSION != "" ]]; then
-    echo "  bash $BASH_VERSION"
-  else
-    echo "  *** unknown shell! ***"
-  fi
-}
-
+###################################################################################################
 alias da='   d *'
 alias dal='  ls -ldF * | less'
 alias dar='  d **/*'
