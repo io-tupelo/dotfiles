@@ -1,13 +1,27 @@
 # echo "common.bash - enter"
 
-function path_prepend() {
+# ***** NOTE *****:  In BASH a semicolon must terminate for 1-liner fns before closing brace!!! (not zsh)
+
+function path_prepend {
   local path_search_dir=$1
   export PATH="${path_search_dir}:${PATH}"
 }
-function path_append() {
+function path_append {
   local path_search_dir=$1
   export PATH="${PATH}:${path_search_dir}"
 }
+function invokeEcho {
+  echo $*
+  $*
+}
+function evalEcho {
+  echo $1
+  eval $1
+}
+# function invokeEchoTime {
+#   echo $*
+#   time ( $* )
+# }
 
 export PATH=.
   path_prepend /bin
@@ -119,6 +133,7 @@ alias hh="history -99"
 alias gvt="~/work/settings/gvt.csh "
 alias gvd="echo gvim -c 'winpos 5 5' -c 'winsize 170 50' "
 
+#TODO fix these => function with arg N
 alias up=" cd .."
 alias up2="cd ../.."
 alias up3="cd ../../.."
@@ -137,11 +152,11 @@ alias cutl="cut --char=-222"
 #---------------------------------------------------------------------------------------------------
 # To initialize a new user (*** WARNING - overwrites dest files! ***):
 #   > cd                                                                    # go to home dir
-#   > git clone  --bare  git@github.com:io-tupelo/dotfiles.git              # creates dir `dotfiles.git` 
+#   > git clone  --bare  git@github.com:io-tupelo/dotfiles.git              # creates dir `dotfiles.git`
 #   > alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'   # define alias
 #   > dgit reset --hard                                                     # use `dgit` to deploy files
 #
-alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}' 
+alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'
 alias dgits='dgit status --short --branch'
 alias dgitca='dgit commit --all'
 alias dgitcam='dgit commit --all -m"misc" '
@@ -157,7 +172,7 @@ alias gitco="   git checkout"
 alias gitca="   git commit --all"
 alias gitcam="  git commit --all -m'misc' "
 alias gitcamp=" git commit --all -m'misc' ; git push"
-alias gitsy="   git pull ; git push ; git push --tags"    # i.e. "git sync" (also pushes tags) 
+alias gitsy="   git pull ; git push ; git push --tags"    # i.e. "git sync" (also pushes tags)
 alias gitdns="  git diff --name-status"
 alias gitdw="   git diff --ignore-all-space --ignore-blank-lines"
 alias gitlg="   git log -22 --oneline --graph --decorate"
@@ -165,7 +180,7 @@ alias git-unadd='git reset HEAD'    # git unadd
 
 #  usage:   gitg v9.3.1   # create a tag
 #           gitg          # display all tags
-function gitg() {
+function gitg {
   local tagStr=$1
   if [[ "$tagStr" == "" ]]; then
     git tag
@@ -175,7 +190,7 @@ function gitg() {
 }
 
 # delete a tag from local and remote (origin)
-function git-tag-delete() {
+function git-tag-delete {
   local tagStr=$1
   local remoteStr=$2
   if [[ $# == 0 ]]; then
@@ -225,7 +240,6 @@ alias git-log-string='git log -S'  # search log for changes to a string
         # old version (doesn't work on mac):
         #   dg      = git difftool --no-prompt --extcmd='gvimdiff --nofork -geometry 180x50+20+40'
 alias gitdg='git difftool --no-prompt --extcmd="gvim -d --nofork " '  # works on mac 2021
-
 
 alias diffw="diff --ignore-all-space --ignore-blank-lines"
 
@@ -290,42 +304,18 @@ function take-chars-6() {
 }
 
 # date/time functions
-function iso-date() {
-  $GDATE "+%Y-%m-%d"
-}
-function iso-time() {
-  $GDATE "+%H:%M:%S"
-}
-function iso-date-time() {
-  echo "$(iso-date)t$(iso-time)"
-}
-function iso-date-time-nice() {
-  echo "$(iso-date) $(iso-time)"
-}
-function epoch-seconds() {
-  $GDATE  "+%s"
-}
-function timestamp-date() {
-  $GDATE "+%Y%m%d"
-}
-function timestamp-time() {
-  $GDATE "+%H%M%S"
-}
-function timestamp-micros() {
-  take-chars-6 $($GDATE "+%N")
-}
-function timestamp-date-time() {
-  echo "$(timestamp-date)-$(timestamp-time)"
-}
-function timestamp-date-time-micros() {
-  echo "$(timestamp-date)-$(timestamp-time)-$(timestamp-micros)"
-}
-function timestamp-epoch-seconds() {
-  echo $(epoch-seconds)
-}
-function timestamp-epoch-seconds-micros() {
-  echo "$(timestamp-epoch-seconds)-$(timestamp-micros)"
-}
+function iso-date() { $GDATE "+%Y-%m-%d" ; }
+function iso-time() { $GDATE "+%H:%M:%S" ; }
+function iso-date-time() { echo "$(iso-date)t$(iso-time)" ; }
+function iso-date-time-nice() { echo "$(iso-date) $(iso-time)" ; }
+function epoch-seconds() { $GDATE  "+%s" ; }
+function timestamp-date() { $GDATE "+%Y%m%d" ; }
+function timestamp-time() { $GDATE "+%H%M%S" ; }
+function timestamp-micros() { take-chars-6 $($GDATE "+%N") ; }
+function timestamp-date-time() { echo "$(timestamp-date)-$(timestamp-time)" ; }
+function timestamp-date-time-micros() { echo "$(timestamp-date)-$(timestamp-time)-$(timestamp-micros)" ; }
+function timestamp-epoch-seconds() { echo $(epoch-seconds) ; }
+function timestamp-epoch-seconds-micros() { echo "$(timestamp-epoch-seconds)-$(timestamp-micros)" ; }
 
 # Return a timestamp string like "20161117-111307" (from  date --iso-8601=seconds => # "2016-11-17T11:13:07-08:00")
 alias dateTimeStr=" $GDATE --iso-8601=seconds | sed -e's/^\(.\{19\}\)\(.*\)/\1/' | sed -e's/-//g' | sed -e's/://g' | sed -e's/T/-/g' "
@@ -343,27 +333,15 @@ alias postman=Postman
 alias gsutil-cpz="gsutil cp -z txt,xml,csv,tsv,psv,html,js -a public-read "
 
 # lein abbreviations
-alias lr="  time (lein run)"
-alias lcr=" time (lein do clean, run)"
-alias lc="  time (lein clean)"
-alias lt="  time (lein test)"
-alias lta=" time (lein test :all)"
-alias ltr=" time (lein test-refresh)"
-alias lct=" time (lein do clean, test)"
-alias lcta="time (lein do clean, test :all)"
-alias lctr="time (lein do clean, test-refresh)"
-
-alias lu="time (lein uberjar)"
-# alias lcu="(lc; lu)"
-alias lcu="time { lein do clean, uberjar; }"  # terminating `;` & space required by bash, but not zsh
-
-
-alias lcdoo="(lc; ldoo)"
-alias ldoo="time lein doo chrome test once"  # phantomjs is deprecated, stuck at old React version
-alias door="time lein doo chrome test "      # phantomjs is deprecated, stuck at old React version
-alias lcdoor="(lc; door)"
-
-alias rmt="rm -rf ./target"
+function rmt  { invokeEcho rm -rf ./target ; } # semicolon is required in BASH for 1-liner fns!!! (not zsh)
+function lr   { evalEcho "time (lein run)" ; }
+function lcr  { evalEcho "time (lein do clean, run)" ; }
+function lt   { evalEcho "time (lein test)" ; }
+function lta  { evalEcho "time (lein test :all)" ; }
+function ltr  { evalEcho 'time (lein test-refresh)' ; }  # line test refresh
+function lct  { evalEcho 'time (lein do clean, test)' ; }  # line clean test
+function lcta { evalEcho "time (lein do clean, test :all)" ; }
+function lctr { evalEcho "time (lein do clean, test-refresh)" ; }
 
 function lanc() {  # Lein ANCient
   echo ""
@@ -379,6 +357,7 @@ function lanc() {  # Lein ANCient
   echo ""-----------------------------------------------------------------------------
   echo ""
 }
+
 
 #---------------------------------------------------------------------------------------------------
 # python abbreviations
@@ -476,12 +455,6 @@ alias cp-shared=" sudo bash -c 'mv /media/sf_shared/* /shared; chown -R alan:ala
 
 # GCP stuff
 export gcp1=35.230.123.85
-
-# lumanu
-alias lum='cd ~/work/lumanu && . Envfile && cd ic'
-export alan_host_1_name="ec2-54-149-36-244.us-west-2.compute.amazonaws.com"
-export alan_host_1_ip="54.149.36.244"
-alias ssh-alan-host-1="ssh -i /home/alan/.ssh/alan-keypair-1.pem ubuntu@${alan_host_1_name}"
 
 #-----------------------------------------------------------------------------
 # workarounds
