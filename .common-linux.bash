@@ -56,7 +56,7 @@ if $(isLinux) ; then #{
     java  --version
   }
 
-  java11  >& /dev/null  # ********** default java version to use **********
+  java15  >& /dev/null  # ********** default java version to use **********
 
 #---------------------------------------------------------------------------------------------------
   unalias gvim >& /dev/null
