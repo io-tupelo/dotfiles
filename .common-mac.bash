@@ -18,6 +18,8 @@ if $(isMac) ; then #{
   path_append /usr/sbin
   path_append /sbin
 
+  path_append ${HOME}/datomic
+
   alias dotags="ctags -R -f .tags"
 
   ### alias d='    ls -ldF'
