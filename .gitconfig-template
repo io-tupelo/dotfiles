@@ -1,6 +1,6 @@
 [user]
 	name = Alan Thompson
-	email = alan.thompson@railsbank.com
+	email = cloojure@gmail.com
 [core]
 	editor = gvim
 	excludesfile = ~/.gitignore
