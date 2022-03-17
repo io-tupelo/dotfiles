@@ -20,6 +20,7 @@
 .nrepl-port
 .rebel_readline_history
 .repl
+.tmp.*
 /.lein-*
 /.nrepl-port
 /checkouts
