@@ -64,9 +64,10 @@ if $(isMac) ; then #{
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  alias java8="openjdk8"
-  alias java11="openjdk11"
-  # alias java17="openjdk17"
+
+  function java8() { openjdk8 ; }
+  function java11() { openjdk11 ; }
+  function java17() { openjdk17 ; }
 
   java8 >& /dev/null
 
