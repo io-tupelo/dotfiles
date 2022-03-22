@@ -44,10 +44,14 @@ if $(isMac) ; then #{
     java -version
   }
   function openjdk17() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk/17.0.1_1"
+    export JAVA_HOME="/usr/local/Cellar/openjdk/17.0.2"
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
+
+  # aliases since no Oracle Java 8 or 11 
+  function java8() { openjdk8 ; }
+  function java11() { openjdk11 ; }
 
   # function java8() {
   #   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -64,10 +68,6 @@ if $(isMac) ; then #{
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-
-  function java8() { openjdk8 ; }
-  function java11() { openjdk11 ; }
-  function java17() { openjdk17 ; }
 
   java8 >& /dev/null
 
