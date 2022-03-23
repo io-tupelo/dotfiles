@@ -1,17 +1,18 @@
 **/*.class
-*.db
 **/*.iml
 **/*.jar
 **/*.out
 **/*.pyc
 **/*.swp
-*jar
 **/.*.swo
 **/.*.swp
-.DS_Store
 **/.cpcache
 **/.idea
-.vagrant
+**/.tags
+**/tags
+*.db
+*jar
+.DS_Store
 .ipynb_checkpoints
 .lein-*
 .lein-deps-sum
@@ -21,6 +22,7 @@
 .rebel_readline_history
 .repl
 .tmp.*
+.vagrant
 /.lein-*
 /.nrepl-port
 /checkouts
@@ -31,6 +33,7 @@
 /resources/public/js/compiled/**
 /target
 /test-results
+Icon?
 TESTS-Chrome*.xml
 classes
 figwheel_server.log
@@ -39,5 +42,3 @@ package-lock.json
 pom.xml
 pom.xml.asc
 profiles.clj
-**/tags
-**/.tags
