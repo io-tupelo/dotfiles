@@ -34,17 +34,17 @@ if $(isMac) ; then #{
   }
 
   function openjdk8() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312"
+    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink to /usr/local/Cellar/openjdk@8/1.8.0+312
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
   function openjdk11() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12"
+    export JAVA_HOME="/usr/local/opt/openjdk@11" # symlink
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
   function openjdk17() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk/17.0.2"
+    export JAVA_HOME="/usr/local/opt/openjdk@17"
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
@@ -65,6 +65,11 @@ if $(isMac) ; then #{
   # }
   function java17() {
     export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
+  function java18() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v 18)
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
