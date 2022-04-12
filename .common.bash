@@ -459,7 +459,7 @@ export gcp1=35.230.123.85
 #-----------------------------------------------------------------------------
 # workarounds
 if $(isLinux) ; then #{
-  alias node=nodejs
+  # alias node=nodejs  # interferes with custome installed "node" executable
   alias yarn=yarnpkg
 fi #}
 
