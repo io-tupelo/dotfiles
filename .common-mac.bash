@@ -18,6 +18,8 @@ if $(isMac) ; then #{
   path_append /usr/sbin
   path_append /sbin
 
+  path_append ${HOME}/datomic
+
   alias dotags="ctags -R -f .tags"
 
   ### alias d='    ls -ldF'
@@ -32,20 +34,24 @@ if $(isMac) ; then #{
   }
 
   function openjdk8() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312"
+    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink to /usr/local/Cellar/openjdk@8/1.8.0+312
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
   function openjdk11() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.12"
+    export JAVA_HOME="/usr/local/opt/openjdk@11" # symlink
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
   function openjdk17() {
-    export JAVA_HOME="/usr/local/Cellar/openjdk/17.0.1_1"
+    export JAVA_HOME="/usr/local/opt/openjdk@17"
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
+
+  # aliases since no Oracle Java 8 or 11 
+  function java8() { openjdk8 ; }
+  function java11() { openjdk11 ; }
 
   # function java8() {
   #   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -62,9 +68,11 @@ if $(isMac) ; then #{
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  alias java8="openjdk8"
-  alias java11="openjdk11"
-  # alias java17="openjdk17"
+  function java18() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v 18)
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
 
   java8 >& /dev/null
 
