@@ -461,7 +461,7 @@ alias cp-shared=" sudo bash -c 'mv /media/sf_shared/* /shared; chown -R alan:ala
 #-----------------------------------------------------------------------------
 # workarounds
 if $(isLinux) ; then #{
-  alias node=nodejs
+  # alias node=nodejs  # interferes with custome installed "node" executable
   alias yarn=yarnpkg
 fi #}
 
