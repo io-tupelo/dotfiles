@@ -84,6 +84,8 @@ function shellver() {
 # # echo "GVIM=${GVIM}"
 # alias gvim=${GVIM}
 
+umask 077   # disable access by group & world
+
 ###################################################################################################
 # These need to be toward the top as they define ${lsColorFlag}, etc that is OS-dependent
 if $(isLinux) ; then  source ~/.common-linux.bash   ; fi
@@ -165,6 +167,7 @@ alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # i.e. "git sync" (al
 alias dgitdw="dgit diff --ignore-all-space --ignore-blank-lines"
 
 #---------------------------------------------------------------------------------------------------
+#TODO  convert to evalEcho
 alias gits="    git status --short --branch"
 alias gitb="    git branch"
 alias gitco="   git checkout"
@@ -231,7 +234,7 @@ function git-branch-root() {
   fi
 }
 
-function git-branch-log() {
+function git-branch-log() {   #TODO  fix this! needs `first` fn
   git log --oneline $(first $(git-branch-root))..$(git-branch-current)
 }
 alias git-log-string='git log -S'  # search log for changes to a string
@@ -243,7 +246,6 @@ alias gitdg='git difftool --no-prompt --extcmd="gvim -d --nofork " '  # works on
 
 alias diffw="diff --ignore-all-space --ignore-blank-lines"
 
-umask 077   # disable access by group & world
 alias shx="chmod u+x *.sh *.bash *.csh *.zsh" # old:  *.clj  *.groovy
 alias kk="kill -9"
 
@@ -454,7 +456,7 @@ alias mvn-install="echo ${mvnInstallCmd}; ${mvnInstallCmd}";
 alias cp-shared=" sudo bash -c 'mv /media/sf_shared/* /shared; chown -R alan:alan /shared ' "
 
 # GCP stuff
-export gcp1=35.230.123.85
+# export gcp1=35.230.123.85
 
 #-----------------------------------------------------------------------------
 # workarounds

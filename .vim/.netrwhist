@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/alanthompson/rails/railsbank/api/SAVE'
 let g:netrw_dirhist_9='/Users/alanthompson/alan/railsbank'
 let g:netrw_dirhist_8='/Users/alanthompson/io-tupelo-demo/ps2/test/clj/tst/demo'
 let g:netrw_dirhist_7='/Users/alanthompson/io-tupelo-demo/ps2/test/clj/tst'
