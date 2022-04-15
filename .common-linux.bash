@@ -56,7 +56,7 @@ if $(isLinux) ; then #{
     java  --version
   }
 
-  java15  >& /dev/null  # ********** default java version to use **********
+  java17  >& /dev/null  # ********** default java version to use **********
 
 #---------------------------------------------------------------------------------------------------
 
