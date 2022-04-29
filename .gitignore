@@ -23,6 +23,7 @@
 .repl
 .tmp.*
 .vagrant
+.vim/.netrwhist
 /.lein-*
 /.nrepl-port
 /checkouts
