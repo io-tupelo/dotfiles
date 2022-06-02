@@ -155,7 +155,7 @@ alias cutl="cut --char=-222"
 #   > alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'   # define alias
 #   > dgit reset --hard                                                     # use `dgit` to deploy files
 #
-function dgit      { evalEcho git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ;}
+function dgit      { git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ;}
 function dgits     { evalEcho dgit status --short --branch ;}
 function dgitca    { evalEcho dgit commit --all ;}
 function dgitcam   { evalEcho dgit commit --all -m"misc"  ;}
