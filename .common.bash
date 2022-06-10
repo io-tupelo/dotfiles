@@ -11,8 +11,8 @@ function path_append {
   export PATH="${PATH}:${path_search_dir}"
 }
 function evalEcho {
-  echo $*
-  eval $*
+  echo "$*"
+  eval "$*"
 }
 # function evalEchoTime {
 #   echo $*
@@ -157,23 +157,23 @@ alias cutl="cut --char=-222"
 #
 function dgit      {           git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ;}
 function dgits     { evalEcho dgit status --short --branch ;}
-function dgitca    { evalEcho dgit commit --all ;}
+alias    dgitca="echo 'dgit commit --all' ; git commit --all "
 function dgitcam   { evalEcho dgit commit --all -m"misc"  ;}
 function dgitcamp  { evalEcho dgit commit --all -m"misc" ; dgit push  ;}
 function dgitsy    { evalEcho "dgit pull ; dgit push ; dgit push --tags" ;}    # i.e. "git sync" (also pushes tags)
-function dgitdw    { evalEcho dgit diff --ignore-all-space --ignore-blank-lines ;}
+function dgitdw    { evalEcho dgit diff --ignore-all-space --ignore-blank-lines $* ;}
 
 #---------------------------------------------------------------------------------------------------
-function gits      { evalEcho git status --short --branch ;}
-function gitb      { evalEcho git branch ;}
-function gitco     { evalEcho git checkout ;}
-function gitca     { evalEcho git commit --all ;}
+function gits      { evalEcho git status --short --branch $* ;}
+function gitb      { evalEcho git branch "$*" ;}
+function gitco     { evalEcho git checkout "$*" ;}
+alias    gitca="echo 'git commit --all' ; git commit --all "
 function gitcam    { evalEcho git commit --all -m'misc' ;}
 function gitcamp   { evalEcho git commit --all -m'misc' ; git push ;}
 function gitsy     { evalEcho "git pull ; git push ; git push --tags" ;} # i.e. "git sync" (also pushes tags)
-function gitdns    { evalEcho git diff --name-status ;}
-function gitdw     { evalEcho git diff --ignore-all-space --ignore-blank-lines ;}
-function gitlg     { evalEcho git log -22 --oneline --graph --decorate ;}
+function gitdns    { evalEcho git diff --name-status $* ;}
+function gitdw     { evalEcho git diff --ignore-all-space --ignore-blank-lines $* ;}
+function gitlg     { evalEcho git log -22 --oneline --graph --decorate $* ;}
 function git-unadd { evalEcho git reset HEAD ;} # git unadd
 
 #  usage:   gitg v9.3.1   # create a tag
