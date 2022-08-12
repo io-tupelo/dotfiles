@@ -170,6 +170,7 @@ function gitco     { evalEcho git checkout "$*" ;}
 alias    gitca="echo 'git commit --all' ; git commit --all "
 function gitcam    { evalEcho git commit --all -m'misc' ;}
 function gitcamp   { evalEcho git commit --all -m'misc' ; git push ;}
+function gitwip    { evalEcho git commit --all -m'SQUAD19-000/awt-wip' ; git push ;}
 function gitsy     { evalEcho "git pull ; git push ; git push --tags" ;} # i.e. "git sync" (also pushes tags)
 function gitdns    { evalEcho git diff --name-status $* ;}
 function gitdw     { evalEcho git diff --ignore-all-space --ignore-blank-lines $* ;}
