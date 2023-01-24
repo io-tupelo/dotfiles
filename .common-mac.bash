@@ -79,5 +79,8 @@ if $(isMac) ; then #{
   # alias gvim="/usr/local/bin/gvim"
   # alias vim="/usr/local/bin/xvim"
 
+  # required for `lein deploy clojars` on OSX for tty input
+  export GPG_TTY=$(tty)
+
 fi #}
 

@@ -10,17 +10,13 @@ function path_append {
   local path_search_dir=$1
   export PATH="${PATH}:${path_search_dir}"
 }
-function invokeEcho {
-  echo $*
-  $*
-}
 function evalEcho {
-  echo $1
-  eval $1
+  echo "$*"
+  eval "$*"
 }
-# function invokeEchoTime {
+# function evalEchoTime {
 #   echo $*
-#   time ( $* )
+#   eval time ( $* )
 # }
 
 export PATH=.
@@ -135,7 +131,8 @@ alias hh="history -99"
 alias gvt="~/work/settings/gvt.csh "
 alias gvd="echo gvim -c 'winpos 5 5' -c 'winsize 170 50' "
 
-#TODO fix these => function with arg N
+#TODO fix these => function with arg N 
+#TODO use evalEcho
 alias up=" cd .."
 alias up2="cd ../.."
 alias up3="cd ../../.."
@@ -158,28 +155,27 @@ alias cutl="cut --char=-222"
 #   > alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'   # define alias
 #   > dgit reset --hard                                                     # use `dgit` to deploy files
 #
-alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'
-alias dgits='dgit status --short --branch'
-alias dgitca='dgit commit --all'
-alias dgitcam='dgit commit --all -m"misc" '
-alias dgitcamp=" dgit commit --all -m'misc' ; dgit push"
-alias dgitsy="dgit pull ; dgit push ; dgit push --tags"    # i.e. "git sync" (also pushes tags)
-alias dgitdw="dgit diff --ignore-all-space --ignore-blank-lines"
+function dgit      {           git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ;}
+function dgits     { evalEcho dgit status --short --branch ;}
+alias    dgitca="echo 'dgit commit --all' ; git commit --all "
+function dgitcam   { evalEcho dgit commit --all -m"misc"  ;}
+function dgitcamp  { evalEcho dgit commit --all -m"misc" ; dgit push  ;}
+function dgitsy    { evalEcho "dgit pull ; dgit push ; dgit push --tags" ;}    # i.e. "git sync" (also pushes tags)
+function dgitdw    { evalEcho dgit diff --ignore-all-space --ignore-blank-lines $* ;}
 
 #---------------------------------------------------------------------------------------------------
-#TODO  convert to evalEcho
-alias gits="    git status --short --branch"
-alias gitb="    git branch"
-alias gitco="   git checkout"
-# alias gitmer="  git merge --no-ff --no-commit"
-alias gitca="   git commit --all"
-alias gitcam="  git commit --all -m'misc' "
-alias gitcamp=" git commit --all -m'misc' ; git push"
-alias gitsy="   git pull ; git push ; git push --tags"    # i.e. "git sync" (also pushes tags)
-alias gitdns="  git diff --name-status"
-alias gitdw="   git diff --ignore-all-space --ignore-blank-lines"
-alias gitlg="   git log -22 --oneline --graph --decorate"
-alias git-unadd='git reset HEAD'    # git unadd
+function gits      { evalEcho git status --short --branch $* ;}
+function gitb      { evalEcho git branch "$*" ;}
+function gitco     { evalEcho git checkout "$*" ;}
+alias    gitca="echo 'git commit --all' ; git commit --all "
+function gitcam    { evalEcho git commit --all -m'misc' ;}
+function gitcamp   { evalEcho git commit --all -m'misc' ; git push ;}
+function gitwip    { evalEcho git commit --all -m'SQUAD19-000/awt-wip' ; git push ;}
+function gitsy     { evalEcho "git pull ; git push ; git push --tags" ;} # i.e. "git sync" (also pushes tags)
+function gitdns    { evalEcho git diff --name-status $* ;}
+function gitdw     { evalEcho git diff --ignore-all-space --ignore-blank-lines $* ;}
+function gitlg     { evalEcho git log -22 --oneline --graph --decorate $* ;}
+function git-unadd { evalEcho git reset HEAD ;} # git unadd
 
 #  usage:   gitg v9.3.1   # create a tag
 #           gitg          # display all tags
@@ -340,8 +336,8 @@ function lr   { evalEcho "time (lein run)" ; }
 function lcr  { evalEcho "time (lein do clean, run)" ; }
 function lt   { evalEcho "time (lein test)" ; }
 function lta  { evalEcho "time (lein test :all)" ; }
-function ltr  { evalEcho 'time (lein test-refresh)' ; }  # line test refresh
-function lct  { evalEcho 'time (lein do clean, test)' ; }  # line clean test
+function ltr  { evalEcho "time (lein test-refresh)" ; }  # line test refresh
+function lct  { evalEcho "time (lein do clean, test)" ; }  # line clean test
 function lcta { evalEcho "time (lein do clean, test :all)" ; }
 function lctr { evalEcho "time (lein do clean, test-refresh)" ; }
 
