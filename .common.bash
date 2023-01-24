@@ -334,7 +334,7 @@ alias postman=Postman
 # matching *.{txt,xml,csv,tsv,psv,html,js}, and set permission to public-read.
 alias gsutil-cpz="gsutil cp -z txt,xml,csv,tsv,psv,html,js -a public-read "
 
-# lein abbreviations
+# Clojure lein abbreviations
 function rmt  { invokeEcho rm -rf ./target ; } # semicolon is required in BASH for 1-liner fns!!! (not zsh)
 function lr   { evalEcho "time (lein run)" ; }
 function lcr  { evalEcho "time (lein do clean, run)" ; }
@@ -344,6 +344,13 @@ function ltr  { evalEcho 'time (lein test-refresh)' ; }  # line test refresh
 function lct  { evalEcho 'time (lein do clean, test)' ; }  # line clean test
 function lcta { evalEcho "time (lein do clean, test :all)" ; }
 function lctr { evalEcho "time (lein do clean, test-refresh)" ; }
+
+# Clojure deps/cli abbreviations. Note there is no `./target` dir produced with deps/cli,
+# so there is no need for the "clean" variants as with leiningen.
+function cr    { evalEcho 'time (clojure -X:run)' ; }           # clojure run
+function ct    { evalEcho 'time (clojure -X:test)' ; }          # clojure test
+function ctr   { evalEcho "time (clojure -M:test-refresh)" ; }  # clojure test refresh
+function cold  { evalEcho 'time (clojure -M:old)' ; }           # clojure old
 
 function lanc() {  # Lein ANCient
   echo ""
