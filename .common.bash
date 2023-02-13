@@ -331,7 +331,7 @@ alias postman=Postman
 alias gsutil-cpz="gsutil cp -z txt,xml,csv,tsv,psv,html,js -a public-read "
 
 # Clojure lein abbreviations
-function rmt  { invokeEcho rm -rf ./target ; } # semicolon is required in BASH for 1-liner fns!!! (not zsh)
+function rmt  { evalEcho "rm -rf ./target" ; } # semicolon is required in BASH for 1-liner fns!!! (not zsh)
 function lr   { evalEcho "time (lein run)" ; }
 function lcr  { evalEcho "time (lein do clean, run)" ; }
 function lt   { evalEcho "time (lein test)" ; }
