@@ -56,7 +56,13 @@ if $(isLinux) ; then #{
     java  --version
   }
 
-  java17  >& /dev/null  # ********** default java version to use **********
+  function java19() {
+    export JAVA_HOME=/opt/java19
+    path_prepend "${JAVA_HOME}/bin"
+    java  --version
+  }
+
+  java19  >& /dev/null  # ********** default java version to use **********
 
 #---------------------------------------------------------------------------------------------------
 

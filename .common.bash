@@ -182,9 +182,9 @@ function git-unadd { evalEcho git reset HEAD ;} # git unadd
 function gitg {
   local tagStr=$1
   if [[ "$tagStr" == "" ]]; then
-    git tag
+    evalEcho git tag
   else
-    git tag "$tagStr" -m"$tagStr"
+    evalEcho git tag "$tagStr" -m"$tagStr" 
   fi
 }
 
