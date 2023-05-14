@@ -33,8 +33,9 @@ if $(isMac) ; then #{
     java -version
   }
 
+  #---------------------------------------------------------------------------------------------------
   function openjdk8() {
-    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink to /usr/local/Cellar/openjdk@8/1.8.0+312
+    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
@@ -44,7 +45,12 @@ if $(isMac) ; then #{
     java -version
   }
   function openjdk17() {
-    export JAVA_HOME="/usr/local/opt/openjdk@17"
+    export JAVA_HOME="/usr/local/opt/openjdk@17" # symlink
+    path_prepend ${JAVA_HOME}/bin
+    java -version
+  }
+  function openjdk20() {
+    export JAVA_HOME="/usr/local/opt/openjdk@20" # symlink => /usr/local/Cellar/openjdk/20.0.1
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
@@ -53,28 +59,21 @@ if $(isMac) ; then #{
   function java8() { openjdk8 ; }
   function java11() { openjdk11 ; }
 
-  # function java8() {
-  #   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-  #   path_prepend ${JAVA_HOME}/bin
-  #   java -version
-  # }
-  # function java11() {
-  #   export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-  #   path_prepend ${JAVA_HOME}/bin
-  #   java -version
-  # }
+  #---------------------------------------------------------------------------------------------------
+  # Download Oracle JDK from:  https://www.oracle.com/java/technologies/downloads/#jdk20-mac
+  #
   function java17() {
     export JAVA_HOME=$(/usr/libexec/java_home -v 17)
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  function java18() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 18)
+  function java20() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v 20)
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
 
-  java8 >& /dev/null
+  java20 >& /dev/null       # default to newest version of java
 
   # alias gvim="/usr/local/bin/gvim"
   # alias vim="/usr/local/bin/xvim"
