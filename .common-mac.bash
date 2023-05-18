@@ -33,11 +33,6 @@ if $(isMac) ; then #{
     java -version
   }
 
-  function openjdk8() {
-    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink to /usr/local/Cellar/openjdk@8/1.8.0+312
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
   function openjdk11() {
     export JAVA_HOME="/usr/local/opt/openjdk@11" # symlink
     path_prepend ${JAVA_HOME}/bin

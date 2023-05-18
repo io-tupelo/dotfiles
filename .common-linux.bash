@@ -33,36 +33,24 @@ if $(isLinux) ; then #{
     java -version
   }
 
-  function java8() {
-    export JAVA_HOME=/opt/java8
-    path_prepend "${JAVA_HOME}/bin"
-    java  -version
-  }
   function java11() {
     export JAVA_HOME=/opt/java11
     path_prepend "${JAVA_HOME}/bin"
     java  --version
-  }
-
-  function java15() {
-    export JAVA_HOME=/opt/java15
-    path_prepend "${JAVA_HOME}/bin"
-    java  --version
-  }
-
+  } 
   function java17() {
     export JAVA_HOME=/opt/java17
     path_prepend "${JAVA_HOME}/bin"
     java  --version
-  }
-
-  function java19() {
-    export JAVA_HOME=/opt/java19
+  } 
+  function java20() {
+    export JAVA_HOME=/opt/java20
     path_prepend "${JAVA_HOME}/bin"
     java  --version
   }
 
-  java19  >& /dev/null  # ********** default java version to use **********
+
+  java20  >& /dev/null  # ********** default java version to use **********
 
 #---------------------------------------------------------------------------------------------------
 
