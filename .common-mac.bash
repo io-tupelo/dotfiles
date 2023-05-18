@@ -33,12 +33,6 @@ if $(isMac) ; then #{
     java -version
   }
 
-  #---------------------------------------------------------------------------------------------------
-  function openjdk8() {
-    export JAVA_HOME="/usr/local/opt/openjdk@8" # symlink
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
   function openjdk11() {
     export JAVA_HOME="/usr/local/opt/openjdk@11" # symlink
     path_prepend ${JAVA_HOME}/bin
@@ -56,7 +50,6 @@ if $(isMac) ; then #{
   }
 
   # aliases since no Oracle Java 8 or 11 
-  function java8() { openjdk8 ; }
   function java11() { openjdk11 ; }
 
   #---------------------------------------------------------------------------------------------------
