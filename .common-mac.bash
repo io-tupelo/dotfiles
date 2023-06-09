@@ -22,8 +22,6 @@ if $(isMac) ; then #{
 
   alias dotags="ctags -R -f .tags"
 
-  ### alias d='    ls -ldF'
-  ### alias lal='  ls -alF'
   alias idea='echo "not implemented; start IDEA from dock" '
 
   function graalvm() {
@@ -72,7 +70,7 @@ if $(isMac) ; then #{
   # alias vim="/usr/local/bin/xvim"
 
   # required for `lein deploy clojars` on OSX for tty input
-  export GPG_TTY=$(tty)
+  # export GPG_TTY=$(tty)
 
 fi #}
 
