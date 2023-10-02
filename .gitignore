@@ -43,3 +43,4 @@ package-lock.json
 pom.xml
 pom.xml.asc
 profiles.clj
+.DS_Store

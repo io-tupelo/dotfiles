@@ -14,6 +14,8 @@ if $(isMac) ; then #{
 
   #TODO maybe make aliases for homebrew coreutils (like ls => gls, etc)
 
+  path_prepend /opt/homebrew/bin
+
   path_append /usr/local/sbin
   path_append /usr/sbin
   path_append /sbin
@@ -22,8 +24,6 @@ if $(isMac) ; then #{
 
   alias dotags="ctags -R -f .tags"
 
-  ### alias d='    ls -ldF'
-  ### alias lal='  ls -alF'
   alias idea='echo "not implemented; start IDEA from dock" '
 
   function graalvm() {
@@ -33,18 +33,19 @@ if $(isMac) ; then #{
     java -version
   }
 
+  # below works for apple silicon version of Homebrew
   function openjdk11() {
-    export JAVA_HOME="/usr/local/opt/openjdk@11" # symlink
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@11" # symlink
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
   function openjdk17() {
-    export JAVA_HOME="/usr/local/opt/openjdk@17" # symlink
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@17" # symlink
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  function openjdk20() {
-    export JAVA_HOME="/usr/local/opt/openjdk@20" # symlink => /usr/local/Cellar/openjdk/20.0.1
+  function openjdk21() {
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@21" # symlink => /usr/local/Cellar/openjdk/21.0.1
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
@@ -60,19 +61,34 @@ if $(isMac) ; then #{
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
-  function java20() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 20)
+  function java21() {
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
     path_prepend ${JAVA_HOME}/bin
     java -version
   }
+# ***** vvv old way, clashes with openjdk21 vvv *****
+# function java21() {
+#   export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
 
-  java20 >& /dev/null       # default to newest version of java
+  java21 >& /dev/null       # default to newest version of java
 
   # alias gvim="/usr/local/bin/gvim"
   # alias vim="/usr/local/bin/xvim"
 
   # required for `lein deploy clojars` on OSX for tty input
   export GPG_TTY=$(tty)
+
+  #-----------------------------------------------------------------------------
+  export T5="/Volumes/Samsung-T5"
+  export T7="/Volumes/Samsung-T7"
+  export E18="/Volumes/Elements-18"
+  export Netac="/Volumes/Netac"
+
+  alias df='df -g'
+  alias du='du -g'
 
 fi #}
 

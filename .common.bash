@@ -120,9 +120,15 @@ alias ddr7="find .  -maxdepth 7  -type d  | sed -e 's/^..//' | xargs ls -ldF ${l
 
 alias ddra='d $(radirs) '                                       # d Dirs Recursive All
 
-alias du="du -m"
-alias df="df -m"
-alias dfs="df -m | grep -v '/snap/' | grep -v '^tmpfs'"
+if $(isMac)   
+then  
+  alias du="du -g"
+  alias df="df -g"
+else
+  # linux does not the the `-g` flag for gigabytes.  Doh!
+  alias du="du -m"
+  alias df="df -m"
+fi
 
 alias wcl="wc -l"       # Word Count Lines
 
@@ -371,7 +377,6 @@ function lanc() {  # Lein ANCient
 export PYTHONDONTWRITEBYTECODE="enable"     # invaluable for avoiding stale cache errors
 # python abbreviations
 # alias python=python3
-alias py=python
 alias py2=python2
 alias py3=python3
 alias pyx="chmod a+x *.py "
