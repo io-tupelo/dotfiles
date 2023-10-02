@@ -11,7 +11,7 @@ function path_append {
   export PATH="${PATH}:${path_search_dir}"
 }
 function evalEcho {
-  echo "$*"
+  echo " => $*"
   eval "$*"
 }
 # function evalEchoTime {

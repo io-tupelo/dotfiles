@@ -20,10 +20,10 @@ PROMPT_DIRTRIM=4
 # bash-specific aliases
 alias dosrc="source ~/.bashrc"
 
-# ********* vvv Automatically added by NVM installer vvv ********* 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# local bash config files
+for ff in $(find ~/dotfiles-local -iname "*.bash") ; do
+  source ${ff}
+done 
 
 # echo ".bashrc - exit"
 

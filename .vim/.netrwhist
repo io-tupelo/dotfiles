@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/alan/jobs'
 let g:netrw_dirhist_2='/home/alan/alan/money/rent/georgia-luca-patrick'
 let g:netrw_dirhist_1='/home/alan/alan/misc'
 let g:netrw_dirhist_0='/Users/alanthompson/rails/railsbank/api/SAVE'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/Users/alanthompson/io-tupelo-demo/ps2/test/clj/tst'
 let g:netrw_dirhist_6='/Users/alanthompson/io-tupelo-demo/ps2/test/clj'
 let g:netrw_dirhist_5='/home/alan/.lein'
 let g:netrw_dirhist_4='/Users/alanthompson/alan/ellinor'
-let g:netrw_dirhist_3='/Users/alanthompson/data-bk'
