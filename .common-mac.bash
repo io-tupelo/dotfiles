@@ -26,54 +26,55 @@ if $(isMac) ; then #{
 
   alias idea='echo "not implemented; start IDEA from dock" '
 
-  function graalvm() {
-    export JAVA_HOME=/opt/graalvm/Contents/Home
-    export GRAALVM_HOME=${GRAALVM_HOME}  # not needed for Java/Clojure (just llvm/polyglot stuff)
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
+# function graalvm() {
+#   export JAVA_HOME=/opt/graalvm/Contents/Home
+#   export GRAALVM_HOME=${GRAALVM_HOME}  # not needed for Java/Clojure (just llvm/polyglot stuff)
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
 
-  # below works for apple silicon version of Homebrew
-  function openjdk11() {
-    export JAVA_HOME="/opt/homebrew/opt/openjdk@11" # symlink
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-  function openjdk17() {
-    export JAVA_HOME="/opt/homebrew/opt/openjdk@17" # symlink
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-  function openjdk21() {
-    export JAVA_HOME="/opt/homebrew/opt/openjdk@21" # symlink => /usr/local/Cellar/openjdk/21.0.1
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-
-  # aliases since no Oracle Java 8 or 11 
-  function java11() { openjdk11 ; }
-
-  #---------------------------------------------------------------------------------------------------
-  # Download Oracle JDK from:  https://www.oracle.com/java/technologies/downloads/#jdk20-mac
-  #
-  function java17() {
-    export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
-  function java21() {
-    export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
-    path_prepend ${JAVA_HOME}/bin
-    java -version
-  }
+# # below works for apple silicon version of Homebrew
+# function openjdk11() {
+#   export JAVA_HOME="/opt/homebrew/opt/openjdk@11" # symlink
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
+# function openjdk17() {
+#   export JAVA_HOME="/opt/homebrew/opt/openjdk@17" # symlink
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
+# function openjdk21() {
+#   export JAVA_HOME="/opt/homebrew/opt/openjdk@21" # symlink => /usr/local/Cellar/openjdk/21.0.1
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
+#
+# # aliases since no Oracle Java 8 or 11 
+# function java11() { openjdk11 ; }
+#
+# #---------------------------------------------------------------------------------------------------
+# # Download Oracle JDK from:  https://www.oracle.com/java/technologies/downloads/#jdk20-mac
+# #
+# function java17() {
+#   export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
+# function java21() {
+#   export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
+#   path_prepend ${JAVA_HOME}/bin
+#   java -version
+# }
+#
 # ***** vvv old way, clashes with openjdk21 vvv *****
 # function java21() {
 #   export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 #   path_prepend ${JAVA_HOME}/bin
 #   java -version
 # }
-
-  java21 >& /dev/null       # default to newest version of java
+#
+# java21 >& /dev/null       # default to newest version of java
 
   # alias gvim="/usr/local/bin/gvim"
   # alias vim="/usr/local/bin/xvim"
