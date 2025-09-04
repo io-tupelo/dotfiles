@@ -22,6 +22,8 @@ if $(isMac) ; then #{
 
   path_append ${HOME}/datomic
 
+  path_append ${HOME}/.rd/bin
+
   alias dotags="ctags -R -f .tags"
 
   alias idea='echo "not implemented; start IDEA from dock" '
@@ -83,13 +85,15 @@ if $(isMac) ; then #{
   # export GPG_TTY=$(tty)
 
   #-----------------------------------------------------------------------------
-  export T5="/Volumes/Samsung-T5"
-  export T7="/Volumes/Samsung-T7"
-  export E18="/Volumes/Elements-18"
-  export Netac="/Volumes/Netac"
+  export S2="/Volumes/S2"
+  export S4="/Volumes/S4"
+  export S8a="/Volumes/S8a"
+  export E1="/Volumes/E1"
+  export E2="/Volumes/E2"
 
   alias df='df -g'
   alias du='du -g'
+
 
 fi #}
 

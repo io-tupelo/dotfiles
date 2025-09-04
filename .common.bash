@@ -34,6 +34,16 @@ export PATH=.
   path_append /usr/sbin
   path_append /sbin
 
+
+# local bash config files
+### echo ".common.bash - dotfiles-local:  enter"
+mkdir -p ~/dotfiles-local 
+for ff in $(find ${HOME}/dotfiles-local -iname "*.bash") ; do
+  ### echo "  source ${ff}"
+  source ${ff}
+done 
+### echo ".common.bash - dotfiles-local:  leave"
+
 function isMac() {
   # $(uname -a) => `Darwin athompson-ol.san.rr.com 19.6.0 Darwin Kernel Version 19.6.0: Tue Nov 10 # 00:10:30 PST 2020; root:xnu-6153.141.10~1/RELEASE_X86_64 x86_64`
   [[ $(uname -a) =~ "Darwin" ]] # returns true (0) or false (1)
@@ -161,7 +171,7 @@ alias cutl="cut --char=-222"
 #   > alias dgit='git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME}'   # define alias
 #   > dgit reset --hard                                                     # use `dgit` to deploy files
 #
-function dgit      {           git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ;}
+function dgit      { git --git-dir=${HOME}/dotfiles.git --work-tree=${HOME} $* ; }
 function dgits     { evalEcho dgit status --short --branch ;}
 alias    dgitca="echo 'dgit commit --all' ; git commit --all "
 function dgitcam   { evalEcho dgit commit --all -m"misc"  ;}
@@ -376,18 +386,20 @@ function lanc() {  # Lein ANCient
 # python env vars
 export PYTHONDONTWRITEBYTECODE="enable"     # invaluable for avoiding stale cache errors
 # python abbreviations
-# alias python=python3
-alias py2=python2
-alias py3=python3
+alias python=python3
+alias py=python3
 alias pyx="chmod a+x *.py "
 alias pyt="pytest -v"
-alias venv2='virtualenv -p /usr/bin/python2 venv'
+#
+# alias py2=python2
+# alias venv2='virtualenv -p /usr/bin/python2 venv'
 alias venv3='virtualenv -p /usr/bin/python3 venv'
-function venvon() {
+
+function venvon() { # #todo change to evalEcho
   echo '    source venv/bin/activate'
             source venv/bin/activate
 }
-function venvoff() {
+function venvoff() { # #todo change to evalEcho
   echo '    deactivate'
             deactivate
 }

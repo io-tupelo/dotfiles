@@ -6,16 +6,12 @@
 source ~/.common.bash
 
 # local zsh config files
-echo "dotfiles-local:  enter"
-if [ -e ~/dotfiles-local ]; then
-  echo "found:"   ~/dotfiles-local
-  for ff in $(find ${HOME}/dotfiles-local -iname "*.zsh") ; do
-    echo "file: ${ff}"
-    source ${ff}
-  done 
-else
-  echo "NOT FOUND:"  ~/dotfiles-local
-fi
-echo "dotfiles-local:  leave"
+### echo ".zshenv - dotfiles-local:  enter"
+mkdir -p ~/dotfiles-local 
+for ff in $(find ${HOME}/dotfiles-local -iname "*.zsh") ; do
+  ### echo "  source ${ff}"
+  source ${ff}
+done 
+### echo ".zshenv - dotfiles-local:  leave"
 
 # echo ".zshenv - exit"
