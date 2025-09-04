@@ -1,6 +1,36 @@
 # echo "common.bash - enter"
 
+# Shell type predicate fns
+function isZsh() {
+  [[ $ZSH_VERSION != "" ]] # returns true (0) or false (1)
+}
+function isBash() {
+  [[ $BASH_VERSION != "" ]] # returns true (0) or false (1)
+}
+
 # ***** NOTE *****:  In BASH a semicolon must terminate for 1-liner fns before closing brace!!! (not zsh)
+function isMac() {
+  # $(uname -a) => `Darwin athompson-ol.san.rr.com 19.6.0 Darwin Kernel Version 19.6.0: Tue Nov 10 # 00:10:30 PST 2020; root:xnu-6153.141.10~1/RELEASE_X86_64 x86_64`
+  [[ $(uname -a) =~ "Darwin" ]] # returns true (0) or false (1)
+}
+function isLinux() {
+  # $(uname -a) => `Linux ubuntu-focal 5.4.0-72-generic #80-Ubuntu SMP Mon Apr 12 17:35:00 UTC # 2021 x86_64 x86_64 x86_64 GNU/Linux`
+  [[ $(uname -a) =~ "Linux"  ]] # returns true (0) or false (1)
+}
+#   sample 1-line usage (a bash "and list"; bash also supports the "or list" using `||`)
+#     isLinux && echo "Found Linux"         <= equivalent to if/then expression
+#     isMac   && echo "Found Darwin"        <= equivalent to if/then expression
+
+# Returns the shell type and version
+function shellver() {
+  if $(isZsh); then
+    echo "  zsh $ZSH_VERSION"
+  elif $(isBash); then
+    echo "  bash $BASH_VERSION"
+  else
+    echo "  *** unknown shell ***"
+  fi
+}
 
 function path_prepend {
   local path_search_dir=$1
@@ -34,61 +64,30 @@ export PATH=.
   path_append /usr/sbin
   path_append /sbin
 
-
-# local bash config files
-### echo ".common.bash - dotfiles-local:  enter"
-mkdir -p ~/dotfiles-local 
-for ff in $(find ${HOME}/dotfiles-local -iname "*.bash") ; do
-  ### echo "  source ${ff}"
-  source ${ff}
-done 
-### echo ".common.bash - dotfiles-local:  leave"
-
-function isMac() {
-  # $(uname -a) => `Darwin athompson-ol.san.rr.com 19.6.0 Darwin Kernel Version 19.6.0: Tue Nov 10 # 00:10:30 PST 2020; root:xnu-6153.141.10~1/RELEASE_X86_64 x86_64`
-  [[ $(uname -a) =~ "Darwin" ]] # returns true (0) or false (1)
-}
-function isLinux() {
-  # $(uname -a) => `Linux ubuntu-focal 5.4.0-72-generic #80-Ubuntu SMP Mon Apr 12 17:35:00 UTC # 2021 x86_64 x86_64 x86_64 GNU/Linux`
-  [[ $(uname -a) =~ "Linux"  ]] # returns true (0) or false (1)
-}
-#   sample 1-line usage (a bash "and list"; bash also supports the "or list" using `||`)
-#     isLinux && echo "Found Linux"         <= equivalent to if/then expression
-#     isMac   && echo "Found Darwin"        <= equivalent to if/then expression
-
-# Shell type predicate fns
-function isZsh() {
-  [[ $ZSH_VERSION != "" ]] # returns true (0) or false (1)
-}
-function isBash() {
-  [[ $BASH_VERSION != "" ]] # returns true (0) or false (1)
-}
-
-# Returns the shell type and version
-function shellver() {
-  if $(isZsh); then
-    echo "  zsh $ZSH_VERSION"
-  elif $(isBash); then
-    echo "  bash $BASH_VERSION"
-  else
-    echo "  *** unknown shell ***"
+# Usage: source_dir_suffix ~/dotfiles-local bash
+function source_dir_suffix {
+  local dir=$1
+  local suffix="$2"
+  ### echo ">> source_dir_suffix $dir $suffix"
+  
+  if [ -d "${dir}" ]; then # ensure dir exists
+    # it appears we must use different commands to produce lists of filenames on bash & zsh
+    if $(isBash) ; then 
+      local files=$(find ${dir} -type f -iname "*.${suffix}" | sort)
+    elif $(isZsh) ; then 
+      local files=( $(find ${dir} -type f -iname "*.${suffix}" | sort) )
+    else
+      echo "***** source_dir_suffix:invalid shell found *****"
+      return 1
+    fi
+    ### echo "files: $files"
+    ### echo "starting loop"
+    for ff in $files ; do
+      ### echo "  >>>> source ${ff}"
+      source ${ff}
+    done 
   fi
 }
-
-# function configGVim {  # ***** why need this? *****
-#   ff=/tmp/$$.out
-#      *** unalias vim
-#      *** unalias gvim
-#   which gvim >& $ff
-#   if [[ $(cat $ff) =~ "command not found" ]] ; then   # returns true (0) or false (1)
-#     GVIM=vim
-#   else
-#     GVIM=$(which gvim)
-#   fi
-# }
-# configGVim
-# # echo "GVIM=${GVIM}"
-# alias gvim=${GVIM}
 
 umask 077   # disable access by group & world
 

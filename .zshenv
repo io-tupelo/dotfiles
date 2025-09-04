@@ -6,6 +6,11 @@
 # common bash/zsh aliases
 source ~/.common.bash
 
+# local zsh config files
+source_dir_suffix  ~/dotfiles-local  zsh
+source_dir_suffix  ~/dotfiles-alan   zsh
+source_dir_suffix  ~/dotfiles-nooop  zsh
+
 # zsh-specific aliases
 alias dosrc="source ~/.zshenv ; source ~/.zshrc"
 

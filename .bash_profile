@@ -1,7 +1,7 @@
 #!/bin/bash
-source ~/.bashrc
+# NOTE: ***** This file is sourced ONLY FOR INTERACTIVE LOGIN SHELLS *****
 
-complete -C /usr/local/bin/terraform terraform
+source ~/.bashrc
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
