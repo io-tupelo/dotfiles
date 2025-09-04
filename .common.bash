@@ -390,6 +390,9 @@ alias python=python3
 alias py=python3
 alias pyx="chmod a+x *.py "
 alias pyt="pytest -v"
+
+alias pip=pip3
+
 #
 # alias py2=python2
 # alias venv2='virtualenv -p /usr/bin/python2 venv'
