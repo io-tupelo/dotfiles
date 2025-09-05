@@ -2,7 +2,8 @@
 # echo ".zshrc - enter"
 
 # NOTE: ***** This file is sourced ONLY FOR INTERACTIVE SHELLS! *****
-# The system won't source this file for non-interactive shells!  So, only interactive-terminal-related stuff can be here.
+# The system won't source this file for non-interactive shells!  
+# So, only put interactive-terminal-related stuff here.
 
 # All common bash/zsh aliases are in `~/.common.bash` which is sourced from `~/.zshenv` (always invoked)
 

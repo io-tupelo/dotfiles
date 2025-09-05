@@ -75,7 +75,7 @@ function source_dir_suffix {
     if $(isBash) ; then 
       local files=$(find ${dir} -type f -iname "*.${suffix}" | sort)
     elif $(isZsh) ; then 
-      local files=( $(find ${dir} -type f -iname "*.${suffix}" | sort) )
+      local files=( $(find ${dir} -type f -iname "*.${suffix}" | sort) )  # coerce into an array
     else
       echo "***** source_dir_suffix:invalid shell found *****"
       return 1

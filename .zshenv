@@ -7,20 +7,13 @@
 source ~/.common.bash
 
 # local zsh config files
-source_dir_suffix  ~/dotfiles-local  zsh
-source_dir_suffix  ~/dotfiles-alan   zsh
-source_dir_suffix  ~/dotfiles-nooop  zsh
+source_dir_suffix  ~/dotfiles-local    bash
+source_dir_suffix  ~/dotfiles-local    zsh
+
+source_dir_suffix  ~/dotfiles-private  bash
+source_dir_suffix  ~/dotfiles-private  zsh
 
 # zsh-specific aliases
 alias dosrc="source ~/.zshenv ; source ~/.zshrc"
-
-# local zsh config files
-### echo ".zshenv - dotfiles-local:  enter"
-mkdir -p ~/dotfiles-local 
-for ff in $(find ${HOME}/dotfiles-local -iname "*.zsh") ; do
-  ### echo "  source ${ff}"
-  source ${ff}
-done 
-### echo ".zshenv - dotfiles-local:  leave"
 
 # echo ".zshenv - exit"

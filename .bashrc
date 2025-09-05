@@ -11,9 +11,8 @@ export BASH_ENV=~/.common.bash
 source ~/.common.bash
 #
 # local bash config files
-source_dir_suffix  ~/dotfiles-local  bash
-source_dir_suffix  ~/dotfiles-alan   bash
-source_dir_suffix  ~/dotfiles-nooop  bash
+source_dir_suffix  ~/dotfiles-local    bash
+source_dir_suffix  ~/dotfiles-private  bash
 
 # vi command-line editing mode
 set -o vi  
@@ -27,11 +26,6 @@ PROMPT_DIRTRIM=4
 
 # bash-specific aliases
 alias dosrc="source ~/.bashrc"
-
-# local bash config files
-for ff in $(find ~/dotfiles-local -iname "*.bash") ; do
-  source ${ff}
-done 
 
 # echo ".bashrc - exit"
 
