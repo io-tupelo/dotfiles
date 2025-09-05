@@ -71,18 +71,12 @@ function source_dir_suffix {
   ### echo ">> source_dir_suffix $dir $suffix"
   
   if [ -d "${dir}" ]; then # ensure dir exists
-    # it appears we must use different commands to produce lists of filenames on bash & zsh
-    if $(isBash) ; then 
-      local files=$(find ${dir} -type f -iname "*.${suffix}" | sort)
-    elif $(isZsh) ; then 
-      local files=( $(find ${dir} -type f -iname "*.${suffix}" | sort) )  # coerce into an array
-    else
-      echo "***** source_dir_suffix:invalid shell found *****"
-      return 1
-    fi
-    ### echo "files: $files"
+    local files=( $(find ${dir} -type f -iname "*.${suffix}" | sort) )  # shell array
+    ### local files2="${files[@]}"
+    ### echo "files2: $files2"
     ### echo "starting loop"
-    for ff in $files ; do
+    for ff in "${files[@]}"  # need special syntax [@] to access "whole array"
+    do 
       ### echo "  >>>> source ${ff}"
       source ${ff}
     done 
