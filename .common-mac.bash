@@ -88,6 +88,7 @@ if $(isMac) ; then #{
   export S2="/Volumes/S2"
   export S4="/Volumes/S4"
   export S8a="/Volumes/S8a"
+  export S8b="/Volumes/S8b"
   export E1="/Volumes/E1"
   export E2="/Volumes/E2"
 
