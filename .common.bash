@@ -382,7 +382,7 @@ export PYTHONDONTWRITEBYTECODE="enable"     # invaluable for avoiding stale cach
 alias python=python3
 alias py=python3
 alias pyx="chmod a+x *.py "
-function pyt    { evalEcho "uv run pytest -s " ; }
+function pt     { evalEcho "uv run pytest -s " ; }
 function ptw    { evalEcho "uv run pytest-watcher . --capture=no" ; }
 
 #---------------------------------------------------------------------------------------------------
