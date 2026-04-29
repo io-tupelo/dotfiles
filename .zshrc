@@ -25,3 +25,6 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
  
 # echo ".zshrc - exit"
+#sledge:binary path
+export SLEDGE_BIN=/Users/vn5aap1/.sledge/bin
+export PATH="${PATH}:${SLEDGE_BIN}"

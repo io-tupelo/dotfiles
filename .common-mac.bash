@@ -14,6 +14,7 @@ if $(isMac) ; then #{
 
   #TODO maybe make aliases for homebrew coreutils (like ls => gls, etc)
 
+  path_prepend /opt/podman/bin
   path_prepend /opt/homebrew/bin
 
   path_append /usr/local/sbin
@@ -92,8 +93,12 @@ if $(isMac) ; then #{
   export E1="/Volumes/E1"
   export E2="/Volumes/E2"
 
+  #-----------------------------------------------------------------------------
   alias df='df -g'
   alias du='du -g'
+
+  # bitbucket auth tool (conflicts with babashka 'bb' command so can't symlink)
+  alias bbkt="/opt/homebrew/Cellar/bb/0.6.0/bin/bb"     
 
 
 fi #}
