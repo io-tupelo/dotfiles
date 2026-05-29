@@ -102,3 +102,7 @@ alias pk          "pkill -9"
 
 
 # echo "~/.cshrc - exit"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+setenv PATH "/Users/vn582dt/.rd/bin"\:"$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

@@ -28,3 +28,21 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 #sledge:binary path
 export SLEDGE_BIN=/Users/vn5aap1/.sledge/bin
 export PATH="${PATH}:${SLEDGE_BIN}"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/vn582dt/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Added by Code Puppy installer on Thu May 21 07:39:19 PDT 2026
+alias code-puppy="$HOME/.code-puppy-venv/bin/code-puppy"
+
+
+# Added by Wibey CLI installation
+export PATH="/Users/vn582dt/.local/bin:$PATH"
+
+
+# Added by Wibey CLI installation
+export BUN_INSTALL_CACHE_DIR="/Users/vn582dt/.local/share/bun/cache"
+
+# Added by Wibey CLI installation
+export PATH="$HOME/.local/bin:$PATH"

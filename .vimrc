@@ -37,7 +37,7 @@ set shell=/bin/zsh
 " Basic settings
 set visualbell
 set noerrorbells
-set diffopt=filler,iwhite
+set diffopt=filler,iwhite,internal
 set shiftwidth=2
 set tabstop=4
 set softtabstop=4
@@ -92,27 +92,27 @@ highlight! link DiffText MatchParen     " Aqua
 " be done with a crtl-v/vrtl-j combination)
 :command! SRC source ~/.vimrc  | source ~/.gvimrc
 
-" Only works for X Windows diff on Cygwin (not Win GUI diff)
-set diffexpr=MyDiff()
-function! MyDiff()
-  let l:opt = '-a --binary '
-  if &diffopt =~ 'icase'  | let l:opt = l:opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let l:opt = l:opt . '-w ' | endif
-  let arg1 = v:fname_in
-  let arg2 = v:fname_new
-  let arg3 = v:fname_out
-  " let cmd = '/opt/freeware/bin/diff'
-  " let cmd = 'diff'
-  " silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-  silent execute '!/usr/bin/diff ' . l:opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  " Can do 'silent execute' or just 'execute'
-  " :new | redraw | echo "there is a new window"
-  "
-  " Needed?  can we delete these?
-  " if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  " if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  " if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-endfunction
+"""   " Only works for X Windows diff on Cygwin (not Win GUI diff)
+"""   set diffexpr=MyDiff()
+"""   function! MyDiff()
+"""     let l:opt = '-a --binary '
+"""     if &diffopt =~ 'icase'  | let l:opt = l:opt . '-i ' | endif
+"""     if &diffopt =~ 'iwhite' | let l:opt = l:opt . '-w ' | endif
+"""     let arg1 = v:fname_in
+"""     let arg2 = v:fname_new
+"""     let arg3 = v:fname_out
+"""     " let cmd = '/opt/freeware/bin/diff'
+"""     " let cmd = 'diff'
+"""     " silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"""     silent execute '!/usr/bin/diff ' . l:opt . arg1 . ' ' . arg2 . ' > ' . arg3
+"""     " Can do 'silent execute' or just 'execute'
+"""     " :new | redraw | echo "there is a new window"
+"""     "
+"""     " Needed?  can we delete these?
+"""     " if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"""     " if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"""     " if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"""   endfunction
 
 " Write a protected file using sudo
 :command! W w !sudo tee % > /dev/null

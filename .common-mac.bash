@@ -24,6 +24,13 @@ if $(isMac) ; then #{
   path_append ${HOME}/datomic
 
   path_append ${HOME}/.rd/bin
+  
+  #############################################################################
+  ### Walmart - begin
+  export SLEDGE_BIN=/Users/vn582dt/.sledge/bin
+  path_append ${SLEDGE_BIN}
+  ### Walmart - end
+  #############################################################################
 
   alias dotags="ctags -R -f .tags"
 
@@ -100,6 +107,15 @@ if $(isMac) ; then #{
   # bitbucket auth tool (conflicts with babashka 'bb' command so can't symlink)
   alias bbkt="/opt/homebrew/Cellar/bb/0.6.0/bin/bb"     
 
+  # Walmart config
+  export AKEYLESS_GATEWAY_URL="https://akeyless.gw.prod.glb.us.walmart.net:8080"
+  export AKEYLESS_GATEWAY_CONFIG_URL="https://akeyless.gw.prod.glb.us.walmart.net:8000"
+  # export KAFKA_BROKER_MAPPINGS='kafka.kafka-v2-conflux-ca-stg.cacentral.prod.ca.walmart.net:9093,127.0.0.1:9093;kafka.kafka-v2-conflux-ca-stg.caeast.prod.ca.walmart.net:9093,127.0.0.1:9094;kafka.kafka-v2-conflux-mx-stg.wus2.westus2.prod.us.walmart.net:9093,127.0.0.1:9096;kafka.kafka-v2-conflux-mx-stg.scus.prod.us.walmart.net:9093,127.0.0.1:9095'
+  
+  export http_proxy=http://sysproxy.wal-mart.com:8080
+  export https_proxy=http://sysproxy.wal-mart.com:8080
+  export no_proxy="localhost,.walmart.net,.prod.walmart.com,.qa.walmart.com,.cloud.walmart.com,.homeoffice.wal-mart.com,.cld.samsclub.com,.walmartlabs.com,.wmt,.local,.bfd.walmart.com,.gecwalmart.com,.prd.hosting.asda.com,.cert.hosting.asda.com,.sit.hosting.asda.com,.prod.jet.com,.qa.jet.com"
+  alias unsetProxy="unset  http_proxy https_proxy no_proxy"
 
 fi #}
 

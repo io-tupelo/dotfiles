@@ -29,3 +29,7 @@ alias dosrc="source ~/.bashrc"
 
 # echo ".bashrc - exit"
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/vn582dt/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

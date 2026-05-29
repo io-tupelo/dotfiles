@@ -11,8 +11,10 @@
 **/.tags
 **/tags
 *.db
+*.iml
 *jar
 .DS_Store
+.idea
 .ipynb_checkpoints
 .lein-*
 .lein-deps-sum
