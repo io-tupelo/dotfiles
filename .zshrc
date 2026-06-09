@@ -36,13 +36,9 @@ export PATH="/Users/vn582dt/.rd/bin:$PATH"
 # Added by Code Puppy installer on Thu May 21 07:39:19 PDT 2026
 alias code-puppy="$HOME/.code-puppy-venv/bin/code-puppy"
 
-
-# Added by Wibey CLI installation
-export PATH="/Users/vn582dt/.local/bin:$PATH"
-
-
 # Added by Wibey CLI installation
 export BUN_INSTALL_CACHE_DIR="/Users/vn582dt/.local/share/bun/cache"
 
 # Added by Wibey CLI installation
 export PATH="$HOME/.local/bin:$PATH"
+

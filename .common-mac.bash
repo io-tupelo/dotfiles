@@ -107,6 +107,7 @@ if $(isMac) ; then #{
   # bitbucket auth tool (conflicts with babashka 'bb' command so can't symlink)
   alias bbkt="/opt/homebrew/Cellar/bb/0.6.0/bin/bb"     
 
+  #-----------------------------------------------------------------------------
   # Walmart config
   export AKEYLESS_GATEWAY_URL="https://akeyless.gw.prod.glb.us.walmart.net:8080"
   export AKEYLESS_GATEWAY_CONFIG_URL="https://akeyless.gw.prod.glb.us.walmart.net:8000"
@@ -116,6 +117,9 @@ if $(isMac) ; then #{
   export https_proxy=http://sysproxy.wal-mart.com:8080
   export no_proxy="localhost,.walmart.net,.prod.walmart.com,.qa.walmart.com,.cloud.walmart.com,.homeoffice.wal-mart.com,.cld.samsclub.com,.walmartlabs.com,.wmt,.local,.bfd.walmart.com,.gecwalmart.com,.prd.hosting.asda.com,.cert.hosting.asda.com,.sit.hosting.asda.com,.prod.jet.com,.qa.jet.com"
   alias unsetProxy="unset  http_proxy https_proxy no_proxy"
+
+  APQ=$PWD/conflux-apq-distributor-shuttle
+  LSV=$PWD/linksave-shuttle
 
 fi #}
 
