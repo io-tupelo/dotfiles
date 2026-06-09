@@ -115,7 +115,7 @@ if $(isMac) ; then #{
   
   export http_proxy=http://sysproxy.wal-mart.com:8080
   export https_proxy=http://sysproxy.wal-mart.com:8080
-  export no_proxy="localhost,.walmart.net,.prod.walmart.com,.qa.walmart.com,.cloud.walmart.com,.homeoffice.wal-mart.com,.cld.samsclub.com,.walmartlabs.com,.wmt,.local,.bfd.walmart.com,.gecwalmart.com,.prd.hosting.asda.com,.cert.hosting.asda.com,.sit.hosting.asda.com,.prod.jet.com,.qa.jet.com"
+  export no_proxy="localhost,.walmart.net,.prod.walmart.com,.qa.walmart.com,.cloud.walmart.com,.homeoffice.wal-mart.com,.cld.samsclub.com,.walmartlabs.com,.wmt,.local,.bfd.walmart.com,.gecwalmart.com,.prd.hosting.asda.com,.cert.hosting.asda.com,.sit.hosting.asda.com,.prod.jet.com,.qa.jet.com,.api.anthropic.com"
   alias unsetProxy="unset  http_proxy https_proxy no_proxy"
 
   APQ=$PWD/conflux-apq-distributor-shuttle
